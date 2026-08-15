@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Astro Ajooba | Rashi, Gemstones aur Astrology</title>
+<meta name="description" content="Rashi, gemstones, Kundali aur astrology ke baare mein Astro Ajooba ke blog par padhein — Acharya Shubham Shastri dwara curated.">
+<link rel="canonical" href="https://YOUR-DOMAIN-HERE/blog.html">
+<meta name="google-site-verification" content="PASTE-YOUR-VERIFICATION-CODE-HERE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300..700,0..1&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .blog-hero{
+    background:
+      radial-gradient(circle at 78% 20%, rgba(212,175,106,0.16), transparent 45%),
+      linear-gradient(160deg, var(--midnight) 0%, var(--plum) 100%);
+    color:var(--bone); padding:70px 0 56px; position:relative; overflow:hidden;
+  }
+  .blog-hero .wrap{ position:relative; z-index:1; }
+  .blog-hero h1{ font-size:clamp(2rem,4.5vw,3rem); font-style:italic; font-weight:400; }
+  .blog-hero p{ margin-top:14px; max-width:520px; color:rgba(243,238,227,0.75); line-height:1.7; }
+
+  .blog-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  @media (max-width:920px){ .blog-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:620px){ .blog-grid{ grid-template-columns:1fr; } }
+
+  .blog-card{
+    background:#fff; border:1px solid rgba(30,27,46,0.08);
+    display:flex; flex-direction:column; transition:transform .25s, box-shadow .25s;
+  }
+  .blog-card:hover{ transform:translateY(-5px); box-shadow:0 26px 48px -28px rgba(43,27,78,0.35); }
+  .blog-card-top{
+    height:8px; background:linear-gradient(90deg, var(--gold), var(--rose));
+  }
+  .blog-card-body{ padding:26px 24px 24px; flex:1; display:flex; flex-direction:column; }
+  .blog-tag{
+    align-self:flex-start;
+    font-family:'Space Mono',monospace; font-size:0.62rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--gold); border:1px solid var(--line);
+    padding:4px 10px; margin-bottom:14px;
+  }
+  .blog-card h3{ font-size:1.15rem; line-height:1.4; }
+  .blog-card p{ margin-top:10px; font-size:0.88rem; line-height:1.65; color:#5c5670; flex:1; }
+  .blog-meta{
+    margin-top:16px; display:flex; align-items:center; justify-content:space-between;
+    font-family:'Space Mono',monospace; font-size:0.68rem; color:#8a84a0;
+  }
+  .blog-read{
+    margin-top:14px; display:inline-flex; align-items:center; gap:6px;
+    font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--midnight); text-decoration:none;
+    border-bottom:1px solid var(--gold); align-self:flex-start; padding-bottom:2px;
+    transition:color .2s;
+  }
+  .blog-read:hover{ color:var(--gold); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="glyph">✦</span> ASTRO AJOOBA</a>
+    <ul class="nav-links">
+      <li><a href="index.html#shop">Shop Karo</a></li>
+      <li><a href="daily-horoscope.html">Aaj Ka Horoscope</a></li>
+      <li><a href="index.html#zodiac">Rashi</a></li>
+      <li><a href="index.html#kundali">Kundali</a></li>
+      <li><a href="index.html#panchang">Panchang</a></li>
+      <li><a href="love-calculator.html">Love Calculator</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="tel:+919889911210" class="nav-call">📞 +91-9889911210</a>
+      <a href="index.html#shop" class="nav-cta">Ab Shop Karo</a>
+    </div>
+  </nav>
+</header>
+
+<section class="blog-hero">
+  <div class="wrap">
+    <p class="eyebrow">Astro Ajooba Blog</p>
+    <h1>Rashi, Ratna, aur Thoda Aasmaan.</h1>
+    <p>Gemstones, kundali, aur rashi ke baare mein chhote, kaam ke articles — Acharya Shubham Shastri ke astrology gyaan se curate kiye gaye.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a href="index.html" class="logo"><span class="glyph">✦</span> ASTRO AJOOBA</a>
+      <p>Gemstone bracelets, rashi ke hisaab se charted aur haath se banaye gaye. Small-batch, order pe banta hai.</p>
+      <p class="foot-phone"><a href="tel:+919889911210">📞 +91-9889911210</a></p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="index.html#shop">Saare Bracelets</a></li>
+        <li><a href="index.html#zodiac">Rashi Ke Hisaab Se</a></li>
+        <li><a href="index.html#guide">Gemstone Guide</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#about">Hamare Baare Mein</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="tel:+919889911210">Contact Karo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="index.html#kundali">Kundali Tool</a></li>
+        <li><a href="index.html#milan">Kundali Milan</a></li>
+        <li><a href="index.html#panchang">Panchang</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Astro Ajooba. Saare rights reserved.</span>
+    <span>Delhi, India · +91-9889911210</span>
+  </div>
+</footer>
+
+<script>
+  const POSTS = [
+    {
+      tag: "Gemstone Guide",
+      title: "Apni Rashi Ke Hisaab Se Sahi Gemstone Kaise Chunein",
+      excerpt: "Har rashi ka apna ruling stone hota hai — par sahi bracelet chunte waqt sirf rashi hi nahi, aapka intent bhi matter karta hai. Yahan ek simple guide hai.",
+      date: "10 Aug 2026", read: "4 min"
+    },
+    {
+      tag: "Astrology 101",
+      title: "Rudraksha Ya Gemstone Bracelet — Aapke Liye Kya Sahi Hai?",
+      excerpt: "Dono hi spiritual aur protective maane jaate hain, par inka use aur asar alag hota hai. Jaanein kaunsa aapki zaroorat ke hisaab se better hai.",
+      date: "3 Aug 2026", read: "5 min"
+    },
+    {
+      tag: "Festivals",
+      title: "Navratri 2026: Nau Din, Nau Rang, Nau Rashi",
+      excerpt: "Navratri ke har din ka apna rang aur devi swaroop hota hai. Dekhein kaise aap apni rashi ke stone ko in nau dinon se connect kar sakte hain.",
+      date: "28 Jul 2026", read: "6 min"
+    },
+    {
+      tag: "Remedies",
+      title: "Mangal Dosh Kya Hai Aur Iske Simple Upay",
+      excerpt: "Mangal Dosh ke baare mein bahut kuch suna hoga — par asal mein iska matlab kya hai, aur kaunse chhote upay madad kar sakte hain? Samjhein simple bhasha mein.",
+      date: "19 Jul 2026", read: "5 min"
+    },
+    {
+      tag: "Gemstone Guide",
+      title: "Moonstone Ke 5 Fayde Jo Shayad Aapko Pata Na Ho",
+      excerpt: "Cancer rashi ka ruling stone Moonstone sirf khoobsurat hi nahi — iske peeche ek poori parampara hai intuition aur emotional balance ki. Jaanein iske 5 khaas fayde.",
+      date: "12 Jul 2026", read: "3 min"
+    },
+    {
+      tag: "Kundali",
+      title: "Kundali Milan Karwane Se Pehle In Baaton Ka Khayal Rakhein",
+      excerpt: "Guna Milan sirf ek number nahi hai — poori tarah samajhne ke liye kuch zaroori baatein jo har family ko pata honi chahiye shaadi se pehle.",
+      date: "5 Jul 2026", read: "6 min"
+    }
+  ];
+
+  const blogGrid = document.getElementById('blogGrid');
+  POSTS.forEach(p => {
+    const waMsg = `Namaste, mujhe "${p.title}" ke baare mein aur jaankari chahiye.`;
+    const waLink = `https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}`;
+    const card = document.createElement('div');
+    card.className = 'blog-card';
+    card.innerHTML = `
+      <div class="blog-card-top"></div>
+      <div class="blog-card-body">
+        <span class="blog-tag">${p.tag}</span>
+        <h3>${p.title}</h3>
+        <p>${p.excerpt}</p>
+        <div class="blog-meta"><span>${p.date}</span><span>${p.read} read</span></div>
+        <a href="${waLink}" class="blog-read" target="_blank" rel="noopener">Poora Padhein / Poochein →</a>
+      </div>`;
+    blogGrid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

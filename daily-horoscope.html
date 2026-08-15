@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaj Ka Horoscope — Saari 12 Rashiyan | Astro Ajooba</title>
+<meta name="description" content="Aaj ka horoscope, saari 12 rashiyon ke liye ek jagah — Prem, Career, Sehat aur ruling gemstone ke saath. Acharya Shubham Shastri dwara curated.">
+<link rel="canonical" href="https://YOUR-DOMAIN-HERE/daily-horoscope.html">
+<meta name="google-site-verification" content="PASTE-YOUR-VERIFICATION-CODE-HERE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300..700,0..1&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .dh-hero{
+    background:
+      radial-gradient(circle at 78% 20%, rgba(212,175,106,0.16), transparent 45%),
+      linear-gradient(160deg, var(--midnight) 0%, var(--plum) 100%);
+    color:var(--bone); padding:70px 0 56px; position:relative; overflow:hidden;
+  }
+  .dh-hero::after{
+    content:"";
+    position:absolute; inset:0; pointer-events:none;
+    background-image:
+      radial-gradient(1.6px 1.6px at 12% 22%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1.2px 1.2px at 28% 68%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(2px 2px at 45% 15%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.4px 1.4px at 62% 78%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1.8px 1.8px at 85% 30%, rgba(255,255,255,0.5), transparent);
+  }
+  .dh-hero .wrap{ position:relative; z-index:1; }
+  .dh-hero h1{ font-size:clamp(2rem,4.5vw,3rem); font-style:italic; font-weight:400; }
+  .dh-hero p{ margin-top:14px; max-width:520px; color:rgba(243,238,227,0.75); line-height:1.7; }
+  .dh-hero .dh-date{
+    display:inline-block; margin-top:18px;
+    font-family:'Space Mono',monospace; font-size:0.78rem; letter-spacing:0.04em;
+    color:var(--gold-soft); border:1px solid var(--line); padding:8px 16px;
+  }
+
+  .dh-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:920px){ .dh-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .dh-grid{ grid-template-columns:1fr; } }
+
+  .dh-card{
+    background:#fff; border:1px solid rgba(30,27,46,0.08); padding:24px;
+    transition:transform .25s, box-shadow .25s; display:flex; flex-direction:column;
+  }
+  .dh-card:hover{ transform:translateY(-5px); box-shadow:0 26px 48px -28px rgba(43,27,78,0.35); }
+  .dh-card-top{ display:flex; align-items:center; gap:12px; }
+  .dh-glyph{
+    width:46px; height:46px; border-radius:50%; flex:none;
+    background:radial-gradient(circle at 35% 30%, var(--plum-soft), var(--midnight) 75%);
+    color:var(--gold-soft); display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:1.3rem;
+  }
+  .dh-card h3{ font-size:1.05rem; }
+  .dh-card .dh-hindi{ font-family:'Space Mono',monospace; font-size:0.68rem; color:#8a84a0; text-transform:uppercase; }
+  .dh-card p.dh-text{ margin-top:14px; font-size:0.86rem; line-height:1.6; color:#5c5670; flex:1; }
+  .dh-meters{ margin-top:14px; display:flex; flex-direction:column; gap:7px; }
+  .dh-meter-row{ display:flex; align-items:center; gap:8px; }
+  .dh-meter-label{ font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.05em; text-transform:uppercase; color:#8a84a0; width:48px; flex:none; }
+  .dh-meter-track{ flex:1; height:4px; background:rgba(30,27,46,0.08); position:relative; overflow:hidden; }
+  .dh-meter-fill{ position:absolute; left:0; top:0; bottom:0; background:linear-gradient(90deg, var(--gold), var(--rose)); }
+  .dh-stone{
+    margin-top:12px; font-family:'Space Mono',monospace; font-size:0.68rem;
+    color:var(--gold); text-transform:uppercase; letter-spacing:0.04em;
+  }
+  .dh-link{
+    margin-top:14px; display:inline-flex; align-items:center; gap:6px;
+    font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--midnight); text-decoration:none;
+    border-bottom:1px solid var(--gold); align-self:flex-start; padding-bottom:2px;
+    transition:color .2s;
+  }
+  .dh-link:hover{ color:var(--gold); }
+
+  .dh-faq{ max-width:720px; margin:0 auto; }
+  .dh-faq-item{ border-bottom:1px solid rgba(30,27,46,0.1); padding:20px 0; }
+  .dh-faq-item h4{ font-size:1rem; font-weight:500; }
+  .dh-faq-item p{ margin-top:8px; font-size:0.88rem; line-height:1.65; color:#5c5670; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="glyph">✦</span> ASTRO AJOOBA</a>
+    <ul class="nav-links">
+      <li><a href="index.html#shop">Shop Karo</a></li>
+      <li><a href="daily-horoscope.html">Aaj Ka Horoscope</a></li>
+      <li><a href="index.html#kundali">Kundali</a></li>
+      <li><a href="love-calculator.html">Love Calculator</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="tel:+919889911210" class="nav-call">📞 +91-9889911210</a>
+      <a href="index.html#shop" class="nav-cta">Ab Shop Karo</a>
+    </div>
+  </nav>
+</header>
+
+<section class="dh-hero">
+  <div class="wrap">
+    <p class="eyebrow">Daily Horoscope</p>
+    <h1>Aaj Ka Horoscope — Saari 12 Rashiyan</h1>
+    <p>Apni rashi dhoondein aur dekhein aaj ka din kaisa rahega — Prem, Career, aur Sehat, ek nazar mein.</p>
+    <span class="dh-date" id="dhDate"></span>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="dh-grid" id="dhGrid"></div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">FAQs</p>
+      <h2>Aksar Poochhe Jaane Waale Sawaal</h2>
+    </div>
+    <div class="dh-faq">
+      <div class="dh-faq-item">
+        <h4>Daily horoscope kaise kaam karta hai?</h4>
+        <p>Har rashi ke liye ek rotating set of readings hoti hain jo tareekh ke hisaab se badalti hain, taaki har din ka apna focus aur mood mile. Yeh Vedic astrology ke traditional concepts se inspired hai.</p>
+      </div>
+      <div class="dh-faq-item">
+        <h4>Kya daily horoscope 100% accurate hota hai?</h4>
+        <p>Horoscope readings general guidance ke liye hoti hain, exact prediction ke liye nahi. Yeh entertainment aur self-reflection ke liye achha tool hai — poori, precise kundali ke liye professional astrologer se salaah lein.</p>
+      </div>
+      <div class="dh-faq-item">
+        <h4>Kya horoscope se relationship problems mein madad milti hai?</h4>
+        <p>Horoscope aapko apne mood aur energy ko samajhne mein madad kar sakta hai, jo conversations ko behtar bana sakta hai — par asli relationship advice ke liye humara Kundali Milan tool ya Acharya ji se baat karna behtar rahega.</p>
+      </div>
+      <div class="dh-faq-item">
+        <h4>Mera ruling gemstone kaise pata chalega?</h4>
+        <p>Neeche apni rashi ka card dekhein — har card mein us rashi ka ruling stone likha hai. Poori jaankari ke liye us rashi ke card pe "Poora Padhein" par click karein.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a href="index.html" class="logo"><span class="glyph">✦</span> ASTRO AJOOBA</a>
+      <p>Gemstone bracelets, rashi ke hisaab se charted aur haath se banaye gaye. Small-batch, order pe banta hai.</p>
+      <p class="foot-phone"><a href="tel:+919889911210">📞 +91-9889911210</a></p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="index.html#shop">Saare Bracelets</a></li>
+        <li><a href="index.html#zodiac">Rashi Ke Hisaab Se</a></li>
+        <li><a href="index.html#guide">Gemstone Guide</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#about">Hamare Baare Mein</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="tel:+919889911210">Contact Karo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="index.html#kundali">Kundali Tool</a></li>
+        <li><a href="index.html#milan">Kundali Milan</a></li>
+        <li><a href="love-calculator.html">Love Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Astro Ajooba. Saare rights reserved.</span>
+    <span>Delhi, India · +91-9889911210</span>
+  </div>
+</footer>
+
+<script>
+  const SIGNS = [
+    {sign:"Aries",slug:"aries",hindi:"Mesh",glyph:"♈",stone:"Carnelian",trait:"Energetic aur bold"},
+    {sign:"Taurus",slug:"taurus",hindi:"Vrishabh",glyph:"♉",stone:"Rose Quartz",trait:"Stable aur loyal"},
+    {sign:"Gemini",slug:"gemini",hindi:"Mithun",glyph:"♊",stone:"Citrine",trait:"Curious aur baatuni"},
+    {sign:"Cancer",slug:"cancer",hindi:"Kark",glyph:"♋",stone:"Moonstone",trait:"Emotional aur caring"},
+    {sign:"Leo",slug:"leo",hindi:"Simha",glyph:"♌",stone:"Tiger's Eye",trait:"Confident aur warm"},
+    {sign:"Virgo",slug:"virgo",hindi:"Kanya",glyph:"♍",stone:"Amazonite",trait:"Detail-oriented aur practical"},
+    {sign:"Libra",slug:"libra",hindi:"Tula",glyph:"♎",stone:"Lapis Lazuli",trait:"Balanced aur diplomatic"},
+    {sign:"Scorpio",slug:"scorpio",hindi:"Vrishchik",glyph:"♏",stone:"Garnet",trait:"Intense aur loyal"},
+    {sign:"Sagittarius",slug:"sagittarius",hindi:"Dhanu",glyph:"♐",stone:"Turquoise",trait:"Free-spirited aur adventurous"},
+    {sign:"Capricorn",slug:"capricorn",hindi:"Makar",glyph:"♑",stone:"Black Onyx",trait:"Disciplined aur ambitious"},
+    {sign:"Aquarius",slug:"aquarius",hindi:"Kumbh",glyph:"♒",stone:"Amethyst",trait:"Independent aur original"},
+    {sign:"Pisces",slug:"pisces",hindi:"Meen",glyph:"♓",stone:"Aquamarine",trait:"Sensitive aur creative"}
+  ];
+
+  const DAY_TEMPLATES = [
+    "Aaj ka din career ke liye achha hai — aapki {trait} energy aapko aage badhayegi. Kaam mein thoda extra focus rakhein.",
+    "Rishton mein aaj thodi warmth mehsoos hogi. Apna {stone} bracelet pehan kar confidence aur bhi badh sakta hai.",
+    "Health ka khayal rakhein — thoda rest lein, energy level thoda low reh sakta hai. Paani zyada piyein.",
+    "Paison ke maamlon mein aaj soch samajh kar decision lein — koi bada kharch abhi taalna behtar rahega.",
+    "Family ke saath time bitayein — chhoti baatein aaj khaas mehsoos hongi, aur ghar ka mahaul khushnuma rahega.",
+    "Naye ideas aur opportunities ke liye aaj ka din shubh hai — aapki {trait} nature aapke kaam aayegi.",
+    "Thoda travel ya outing plan ho sakta hai — mood fresh rahega, aur naye connections ban sakte hain."
+  ];
+
+  function hashDate(str){
+    let h = 0;
+    for (let i = 0; i < str.length; i++){ h = (h * 31 + str.charCodeAt(i)) >>> 0; }
+    return h;
+  }
+
+  const today = new Date();
+  document.getElementById('dhDate').textContent =
+    today.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  const dateKey = today.toISOString().slice(0,10);
+
+  const dhGrid = document.getElementById('dhGrid');
+  SIGNS.forEach(z => {
+    const h = hashDate(dateKey + z.slug);
+    const text = DAY_TEMPLATES[h % DAY_TEMPLATES.length]
+      .replace('{trait}', z.trait).replace('{stone}', z.stone);
+    const love = 40 + (h % 55);
+    const career = 40 + ((h >> 3) % 55);
+    const health = 40 + ((h >> 6) % 55);
+
+    const card = document.createElement('div');
+    card.className = 'dh-card';
+    card.innerHTML = `
+      <div class="dh-card-top">
+        <div class="dh-glyph">${z.glyph}</div>
+        <div><h3>${z.sign}</h3><div class="dh-hindi">${z.hindi}</div></div>
+      </div>
+      <p class="dh-text">${text}</p>
+      <div class="dh-meters">
+        <div class="dh-meter-row"><span class="dh-meter-label">Prem</span><div class="dh-meter-track"><div class="dh-meter-fill" style="width:${love}%"></div></div></div>
+        <div class="dh-meter-row"><span class="dh-meter-label">Career</span><div class="dh-meter-track"><div class="dh-meter-fill" style="width:${career}%"></div></div></div>
+        <div class="dh-meter-row"><span class="dh-meter-label">Sehat</span><div class="dh-meter-track"><div class="dh-meter-fill" style="width:${health}%"></div></div></div>
+      </div>
+      <div class="dh-stone">✦ Ruling Stone: ${z.stone}</div>
+      <a href="rashi/${z.slug}.html" class="dh-link">Poora Padhein →</a>`;
+    dhGrid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
