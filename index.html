@@ -106,6 +106,66 @@
     transition:color .2s;
   }
   .nav-call:hover{ color:var(--gold); }
+  .nav-cart-btn{
+    position:relative; background:none; border:none; cursor:pointer;
+    font-size:1.15rem; color:var(--bone); padding:6px; line-height:1;
+  }
+  .cart-count{
+    position:absolute; top:-4px; right:-6px;
+    background:var(--gold); color:var(--midnight);
+    font-family:'Space Mono',monospace; font-size:0.62rem; font-weight:700;
+    min-width:16px; height:16px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; padding:0 3px;
+  }
+
+  .cart-overlay{
+    position:fixed; inset:0; background:rgba(12,9,33,0.6); z-index:90;
+    backdrop-filter:blur(2px);
+  }
+  .cart-drawer{
+    position:fixed; top:0; right:0; bottom:0; width:100%; max-width:420px; z-index:91;
+    background:var(--bone); box-shadow:-20px 0 50px rgba(0,0,0,0.3);
+    display:flex; flex-direction:column;
+    animation:cartSlideIn .25s ease;
+  }
+  @keyframes cartSlideIn{ from{ transform:translateX(100%); } to{ transform:translateX(0); } }
+  .cart-drawer-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 24px; border-bottom:1px solid rgba(30,27,46,0.1);
+  }
+  .cart-drawer-head h3{ font-size:1.2rem; }
+  .cart-close{ background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--ink); }
+  .cart-items{ flex:1; overflow-y:auto; padding:10px 24px; }
+  .cart-empty{ text-align:center; padding:60px 0; color:#8a84a0; font-size:0.9rem; }
+  .cart-item{
+    display:flex; align-items:center; gap:12px; padding:16px 0;
+    border-bottom:1px solid rgba(30,27,46,0.08);
+  }
+  .cart-item-thumb{
+    width:56px; height:56px; flex:none; overflow:hidden; background:var(--bone);
+    display:flex; align-items:center; justify-content:center; border:1px solid rgba(30,27,46,0.08);
+  }
+  .cart-item-thumb img{ width:100%; height:100%; object-fit:cover; }
+  .cart-item-info{ flex:1; min-width:0; }
+  .cart-item-info .ci-name{ font-size:0.88rem; font-weight:500; }
+  .cart-item-info .ci-price{ font-size:0.8rem; color:#8a84a0; margin-top:2px; }
+  .cart-item-qty{ display:flex; align-items:center; gap:8px; margin-top:8px; }
+  .cart-qty-btn{
+    width:22px; height:22px; border:1px solid rgba(30,27,46,0.2); background:#fff;
+    cursor:pointer; font-size:0.85rem; line-height:1; border-radius:2px;
+  }
+  .cart-item-remove{
+    background:none; border:none; color:#b8324a; font-size:0.72rem;
+    text-decoration:underline; cursor:pointer; flex:none; align-self:flex-start;
+  }
+  .cart-drawer-foot{ padding:20px 24px 26px; border-top:1px solid rgba(30,27,46,0.1); }
+  .cart-subtotal-row{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'Fraunces',serif; font-size:1.1rem; margin-bottom:16px;
+  }
+  .cart-checkout-btn{ display:block; text-align:center; width:100%; box-sizing:border-box; }
+  .cart-note{ margin-top:12px; font-size:0.74rem; color:#8a84a0; text-align:center; line-height:1.5; }
+
   .nav-cta{
     font-family:'Space Mono',monospace;
     font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
@@ -577,6 +637,49 @@
   .btn-whatsapp:hover{ background:#1ebe5a; transform:translateY(-2px); }
   .kundali-ask-wa{ display:inline-block; margin-top:8px; }
 
+  /* ---------- BHAVISHYA FAL (elaborate kundali result) ---------- */
+  .bhavishya-section{
+    width:100%; margin-top:30px; padding-top:28px;
+    border-top:1px dashed var(--line);
+  }
+  .bhavishya-eyebrow{
+    font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--gold); text-align:center;
+  }
+  .bhavishya-title{
+    margin-top:8px; text-align:center; font-family:'Fraunces',serif; font-style:italic;
+    font-weight:400; font-size:1.15rem; color:var(--bone);
+  }
+  .lucky-strip{
+    margin-top:20px; display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  @media (max-width:520px){ .lucky-strip{ grid-template-columns:repeat(2,1fr); } }
+  .lucky-item{
+    background:rgba(12,9,33,0.5); padding:14px 10px; text-align:center;
+    display:flex; flex-direction:column; gap:5px;
+  }
+  .lucky-label{
+    font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:rgba(243,238,227,0.5);
+  }
+  .lucky-value{ font-family:'Fraunces',serif; font-size:1.05rem; color:var(--gold-soft); }
+  .bhavishya-grid{
+    margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:14px; text-align:left;
+  }
+  @media (max-width:560px){ .bhavishya-grid{ grid-template-columns:1fr; } }
+  .bhavishya-card{
+    background:rgba(243,238,227,0.03); border:1px solid var(--line);
+    padding:18px 20px;
+  }
+  .bhavishya-card .bf-icon{ font-size:1.3rem; }
+  .bhavishya-card h5{
+    margin-top:8px; font-family:'Fraunces',serif; font-weight:500; font-size:1rem; color:var(--gold-soft);
+  }
+  .bhavishya-card p{
+    margin-top:8px; font-size:0.86rem; line-height:1.6; color:rgba(243,238,227,0.75);
+  }
+
   .kundali-note{
     margin-top:22px; text-align:center; font-size:0.78rem; color:rgba(243,238,227,0.45);
   }
@@ -684,10 +787,30 @@
     </ul>
     <div class="nav-actions">
       <a href="tel:+919889911210" class="nav-call">📞 +91-9889911210</a>
+      <button type="button" id="cartBtn" class="nav-cart-btn" aria-label="Cart">
+        🛒 <span id="cartCount" class="cart-count" hidden>0</span>
+      </button>
       <a href="#shop" class="nav-cta">Ab Shop Karo</a>
     </div>
   </nav>
 </header>
+
+<div id="cartOverlay" class="cart-overlay" hidden></div>
+<aside id="cartDrawer" class="cart-drawer" hidden>
+  <div class="cart-drawer-head">
+    <h3>Aapka Cart</h3>
+    <button type="button" id="cartCloseBtn" class="cart-close" aria-label="Close cart">✕</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-subtotal-row">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">₹0</span>
+    </div>
+    <a href="#" id="cartCheckoutBtn" class="btn-whatsapp cart-checkout-btn" target="_blank" rel="noopener">✆ WhatsApp Pe Order Karo</a>
+    <p class="cart-note">Order confirm karne ke liye humari team WhatsApp par aapse baat karegi — payment aur delivery details wahin discuss honge.</p>
+  </div>
+</aside>
 
 <section class="hero">
   <svg class="ganesh-watermark" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1052,13 +1175,112 @@
     {sign:"Pisces", slug:"pisces", hindi:"Meen", dates:"Feb 19–Mar 20", range:[[2,19],[3,20]], glyph:"♓", stone:"Aquamarine", blurb:"Sensitive aur creative — kalpanasheel aur sapne dekhne waale hote hain."}
   ];
 
+  const BHAVISHYA_FAL = {
+    Aries: {
+      career:"Naye projects shuru karne ka sahi samay hai. Aapki leadership quality aage badhayegi, khaaskar agar risk lene ko taiyar hain.",
+      love:"Rishton mein directness aapke fayde mein rahegi. Agar single hain toh naye connections banne ke strong chances hain.",
+      health:"Energy level high rahega, par overexertion se bachein — thoda rest bhi zaroori hai.",
+      finance:"Impulsive kharch se bachna zaroori hoga. Bade investments se pehle soch samajh lein.",
+      family:"Ghar mein aapki active presence sabko positive energy degi.",
+      luckyNumber:"9", luckyColor:"Laal (Red)", luckyDay:"Mangalvar", luckyDirection:"Poorv (East)"
+    },
+    Taurus: {
+      career:"Dheeraj aur mehnat se steady progress hogi. Naukri mein stability aur growth dono milne ke asaar hain.",
+      love:"Rishton mein depth aur commitment badhega. Married logon ke liye yeh samay harmony laayega.",
+      health:"Overall achhi rahegi, par diet pe dhyan dena zaroori hai — comfort food se bachein.",
+      finance:"Savings badhane ka achha samay hai. Property ya long-term investment ke liye shubh hai.",
+      family:"Ghar mein shanti aur comfort banaye rakhne mein aap successful honge.",
+      luckyNumber:"6", luckyColor:"Hara (Green)", luckyDay:"Shukravar", luckyDirection:"Dakshin (South)"
+    },
+    Gemini: {
+      career:"Naye ideas aur networking se career mein growth milegi. Communication-based kaam mein khaas safalta.",
+      love:"Conversations aur understanding rishton ko mazboot karenge. Naye log milne ke chances zyada.",
+      health:"Mental stress ka khayal rakhein — relaxation techniques try karein.",
+      finance:"Multiple income sources explore karne ka achha samay. Par overspending se bachein.",
+      family:"Family members ke saath achhi baatcheet rishton ko aur gehra banayegi.",
+      luckyNumber:"5", luckyColor:"Peela (Yellow)", luckyDay:"Budhvar", luckyDirection:"Paschim (West)"
+    },
+    Cancer: {
+      career:"Team-oriented kaam mein aap chamkenge. Apni caring nature se colleagues ka trust jeetenge.",
+      love:"Emotional connection is samay gehra hoga. Family aur partner dono ke saath bonding badhegi.",
+      health:"Emotional wellbeing ka khayal rakhein — stress digestion ko affect kar sakta hai.",
+      finance:"Family expenses pe focus rahega. Savings ke liye ek clear plan banayein.",
+      family:"Ghar parivar aapki priority rahega, aur unka support aapko strength dega.",
+      luckyNumber:"2", luckyColor:"Safed (White)", luckyDay:"Somvar", luckyDirection:"Uttar (North)"
+    },
+    Leo: {
+      career:"Leadership roles mein aap naturally chamkenge. Recognition aur promotion ke strong chances.",
+      love:"Aapki warmth logon ko attract karegi. Romance mein confidence badhega.",
+      health:"Heart aur energy levels ka khayal rakhein — regular exercise faydemand rahega.",
+      finance:"Income badhne ke asaar hain, par shaan-shaukat pe zyada kharch na karein.",
+      family:"Aapki presence family gatherings mein khushi laayegi.",
+      luckyNumber:"1", luckyColor:"Sunahra (Gold)", luckyDay:"Ravivar", luckyDirection:"Poorv (East)"
+    },
+    Virgo: {
+      career:"Aapki precision aur mehnat career mein noticed hogi. Detail-focused kaam mein khaas safalta.",
+      love:"Practical approach rishton ko stable banayegi, par thoda spontaneous bhi banein.",
+      health:"Digestive health pe dhyan dein — routine aur diet mein balance rakhein.",
+      finance:"Budgeting mein aap expert hain — is samay savings goals achieve honge.",
+      family:"Family responsibilities ko aap efficiently handle karenge.",
+      luckyNumber:"5", luckyColor:"Slate (Grey)", luckyDay:"Budhvar", luckyDirection:"Dakshin (South)"
+    },
+    Libra: {
+      career:"Teamwork aur diplomacy se aap workplace conflicts achhi tarah handle karenge.",
+      love:"Partnerships aur vivah ke liye shubh samay hai. Balance aur harmony badhegi.",
+      health:"Kidney aur skin health ka khayal rakhein, hydration zaroori hai.",
+      finance:"Joint investments ya partnerships financially faydemand ho sakte hain.",
+      family:"Family mein peacemaker ka role aap achhi tarah nibhayenge.",
+      luckyNumber:"6", luckyColor:"Gulabi (Pink)", luckyDay:"Shukravar", luckyDirection:"Uttar (North)"
+    },
+    Scorpio: {
+      career:"Aapki determination badi challenges ko bhi paar karwa degi. Research/investigation wale kaam mein khaas.",
+      love:"Deep, transformative connections is samay ban sakte hain. Trust rebuild karne ka bhi samay.",
+      health:"Emotional intensity ko manage karein — meditation faydemand rahega.",
+      finance:"Hidden income sources ya investments profitable ho sakte hain.",
+      family:"Family ki purani baatein resolve hone ke asaar hain.",
+      luckyNumber:"9", luckyColor:"Maroon", luckyDay:"Mangalvar", luckyDirection:"Paschim (West)"
+    },
+    Sagittarius: {
+      career:"Naye opportunities, khaaskar travel ya higher education se related, khulenge.",
+      love:"Freedom aur adventure partner ke saath share karne ka mauka milega.",
+      health:"Overall achhi rahegi, par khaane-peene mein overindulgence se bachein.",
+      finance:"Foreign ya long-distance investments favorable ho sakte hain.",
+      family:"Family ke saath ek trip ya naya experience bonding badhayega.",
+      luckyNumber:"3", luckyColor:"Purple", luckyDay:"Guruvar", luckyDirection:"Poorv (East)"
+    },
+    Capricorn: {
+      career:"Mehnat ka fal milega — promotion ya nayi responsibility mil sakti hai.",
+      love:"Commitment aur seriousness rishton ko mazboot karegi.",
+      health:"Joints aur haddiyon ka khayal rakhein, regular movement zaroori.",
+      finance:"Long-term financial planning is samay fal degi.",
+      family:"Family ki zimmedari achhe se nibhayenge, respect badhega.",
+      luckyNumber:"8", luckyColor:"Kaala (Black)", luckyDay:"Shanivar", luckyDirection:"Dakshin (South)"
+    },
+    Aquarius: {
+      career:"Innovative ideas se aap apni field mein alag pehchaan banayenge.",
+      love:"Unconventional par meaningful connections is samay ban sakte hain.",
+      health:"Nervous system ka khayal rakhein, achhi neend zaroori hai.",
+      finance:"Naye, unique income sources explore karne ka achha samay.",
+      family:"Family ko apni independent soch samjhane mein safal honge.",
+      luckyNumber:"4", luckyColor:"Neela (Blue)", luckyDay:"Shanivar", luckyDirection:"Paschim (West)"
+    },
+    Pisces: {
+      career:"Creative fields mein khaas safalta milegi. Apni intuition pe bharosa karein.",
+      love:"Emotional aur spiritual connection gehra hoga partner ke saath.",
+      health:"Paanv aur emotional health ka khayal rakhein, rest zaroori hai.",
+      finance:"Intuition se investment decisions achhe rahenge, par verify zaroor karein.",
+      family:"Family ke emotional support system mein aap central role play karenge.",
+      luckyNumber:"7", luckyColor:"Sea Green", luckyDay:"Guruvar", luckyDirection:"Uttar (North)"
+    }
+  };
+
   const PRODUCTS = [
-    {name:"Cancer Moonstone Bracelet", sign:"Cancer", stone:"Moonstone", price:"₹1,499", color1:"#DCE3EF", color2:"#9AA9C4", image:"images/moonstone.jpg"},
-    {name:"Leo Tiger's Eye Cuff", sign:"Leo", stone:"Tiger's Eye", price:"₹1,699", color1:"#D9A64A", color2:"#6B4A1E", image:"images/tiger-eye.jpg"},
-    {name:"Aquarius Amethyst Wrap", sign:"Aquarius", stone:"Amethyst", price:"₹1,999", color1:"#B49BD6", color2:"#5C3E82", image:"images/amethyst.jpg"},
-    {name:"Taurus Rose Quartz Set", sign:"Taurus", stone:"Rose Quartz", price:"₹2,499", color1:"#F0C9CF", color2:"#C48C93", image:"images/rose-quartz.jpg"},
-    {name:"Libra Lapis Lazuli Bracelet", sign:"Libra", stone:"Lapis Lazuli", price:"₹1,899", color1:"#3D5A9E", color2:"#1B2A55", image:"images/lapis-lazuli.jpg"},
-    {name:"Scorpio Garnet Strand", sign:"Scorpio", stone:"Garnet", price:"₹1,599", color1:"#8E2B3B", color2:"#4A1520", image:"images/garnet.jpg"}
+    {id:"cancer-moonstone", name:"Cancer Moonstone Bracelet", sign:"Cancer", stone:"Moonstone", price:"₹1,499", color1:"#DCE3EF", color2:"#9AA9C4", image:"images/moonstone.jpg"},
+    {id:"leo-tigereye", name:"Leo Tiger's Eye Cuff", sign:"Leo", stone:"Tiger's Eye", price:"₹1,349", color1:"#D9A64A", color2:"#6B4A1E", image:"images/tiger-eye.jpg"},
+    {id:"aquarius-amethyst", name:"Aquarius Amethyst Wrap", sign:"Aquarius", stone:"Amethyst", price:"₹2,199", color1:"#B49BD6", color2:"#5C3E82", image:"images/amethyst.jpg"},
+    {id:"taurus-rosequartz", name:"Taurus Rose Quartz Set", sign:"Taurus", stone:"Rose Quartz", price:"₹1,799", color1:"#F0C9CF", color2:"#C48C93", image:"images/rose-quartz.jpg"},
+    {id:"libra-lapis", name:"Libra Lapis Lazuli Bracelet", sign:"Libra", stone:"Lapis Lazuli", price:"₹1,599", color1:"#3D5A9E", color2:"#1B2A55", image:"images/lapis-lazuli.jpg"},
+    {id:"scorpio-garnet", name:"Scorpio Garnet Strand", sign:"Scorpio", stone:"Garnet", price:"₹1,399", color1:"#8E2B3B", color2:"#4A1520", image:"images/garnet.jpg"}
   ];
 
   const GEMS = [
@@ -1146,9 +1368,21 @@
       </div>
       <div class="card-foot">
         <span class="price">${p.price}</span>
-        <a href="#" class="add-link">Cart Mein Daalo</a>
+        <a href="#" class="add-link" data-product-id="${p.id}">Cart Mein Daalo</a>
       </div>`;
     productGrid.appendChild(card);
+  });
+
+  productGrid.querySelectorAll('.add-link[data-product-id]').forEach(btn => {
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      const product = PRODUCTS.find(p => p.id === this.dataset.productId);
+      if (!product) return;
+      addToCart(product);
+      const original = this.textContent;
+      this.textContent = 'Add Ho Gaya ✓';
+      setTimeout(() => { this.textContent = original; }, 1200);
+    });
   });
 
   // zodiac grid
@@ -1293,12 +1527,55 @@
            <a href="#shop" class="add-link">Poora Shop</a>
          </div>`;
 
+    const bf = BHAVISHYA_FAL[rashi.sign];
+    const bhavishyaHTML = bf ? `
+      <div class="bhavishya-section">
+        <p class="bhavishya-eyebrow">✦ Bhavishya Fal ✦</p>
+        <h4 class="bhavishya-title">${name} Ke Liye Vistrit Bhavishya</h4>
+
+        <div class="lucky-strip">
+          <div class="lucky-item"><span class="lucky-label">Lucky Number</span><span class="lucky-value">${bf.luckyNumber}</span></div>
+          <div class="lucky-item"><span class="lucky-label">Lucky Color</span><span class="lucky-value">${bf.luckyColor}</span></div>
+          <div class="lucky-item"><span class="lucky-label">Shubh Din</span><span class="lucky-value">${bf.luckyDay}</span></div>
+          <div class="lucky-item"><span class="lucky-label">Disha</span><span class="lucky-value">${bf.luckyDirection}</span></div>
+        </div>
+
+        <div class="bhavishya-grid">
+          <div class="bhavishya-card">
+            <div class="bf-icon">💼</div>
+            <h5>Career &amp; Vyavsaya</h5>
+            <p>${bf.career}</p>
+          </div>
+          <div class="bhavishya-card">
+            <div class="bf-icon">❤️</div>
+            <h5>Prem &amp; Vivah</h5>
+            <p>${bf.love}</p>
+          </div>
+          <div class="bhavishya-card">
+            <div class="bf-icon">💰</div>
+            <h5>Dhan &amp; Arthik</h5>
+            <p>${bf.finance}</p>
+          </div>
+          <div class="bhavishya-card">
+            <div class="bf-icon">🌿</div>
+            <h5>Swasthya</h5>
+            <p>${bf.health}</p>
+          </div>
+          <div class="bhavishya-card">
+            <div class="bf-icon">👨‍👩‍👧</div>
+            <h5>Parivar</h5>
+            <p>${bf.family}</p>
+          </div>
+        </div>
+      </div>` : '';
+
     kundaliResult.innerHTML = `
       ${kundaliChartSVG(rashi.glyph)}
       <p class="rname">${name} Ki Kundali</p>
       <h3>${rashi.sign} · ${rashi.hindi}</h3>
       <p class="stone" style="color:var(--gold-soft);">${rashi.dates} · Ruling Stone: ${rashi.stone}</p>
       <p class="rblurb">${rashi.blurb}</p>
+      ${bhavishyaHTML}
       ${productHTML}
       <a href="#" id="kAskWaBtn" class="btn-whatsapp kundali-ask-wa" target="_blank" rel="noopener">✆ Iske Baare Mein Sawaal Poochein</a>
       <button type="button" class="kundali-restart" id="kRestartBtn">↺ Naya Kundali Banao</button>`;
@@ -1494,6 +1771,114 @@
     <tr><td>Rahu Kaal</td><td>${segmentTime(RAHU_SEGMENT[weekdayIdx], sunriseMin, sunsetMin)}</td></tr>
     <tr><td>Yamaganda</td><td>${segmentTime(YAMAGANDA_SEGMENT[weekdayIdx], sunriseMin, sunsetMin)}</td></tr>
     <tr><td>Gulika Kaal</td><td>${segmentTime(GULIKA_SEGMENT[weekdayIdx], sunriseMin, sunsetMin)}</td></tr>`;
+
+  // ---------- Shopping Cart ----------
+  const CART_KEY = 'astroAjoobaCart';
+
+  function loadCart(){
+    try {
+      const raw = localStorage.getItem(CART_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch(e){ return []; }
+  }
+  function saveCart(cart){
+    try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch(e){}
+  }
+  function priceToNumber(priceStr){
+    return Number(String(priceStr).replace(/[^0-9]/g, '')) || 0;
+  }
+  function formatINR(n){
+    return '₹' + n.toLocaleString('en-IN');
+  }
+
+  function addToCart(product){
+    const cart = loadCart();
+    const existing = cart.find(item => item.id === product.id);
+    if (existing){ existing.qty += 1; }
+    else { cart.push({ id:product.id, name:product.name, price:product.price, image:product.image || '', qty:1 }); }
+    saveCart(cart);
+    renderCart();
+    openCart();
+  }
+  function changeQty(id, delta){
+    const cart = loadCart();
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    const updated = item.qty > 0 ? cart : cart.filter(i => i.id !== id);
+    saveCart(updated);
+    renderCart();
+  }
+  function removeFromCart(id){
+    const cart = loadCart().filter(i => i.id !== id);
+    saveCart(cart);
+    renderCart();
+  }
+
+  const cartBtn = document.getElementById('cartBtn');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartCloseBtn = document.getElementById('cartCloseBtn');
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartSubtotalEl = document.getElementById('cartSubtotal');
+  const cartCountEl = document.getElementById('cartCount');
+  const cartCheckoutBtn = document.getElementById('cartCheckoutBtn');
+
+  function openCart(){ cartDrawer.hidden = false; cartOverlay.hidden = false; }
+  function closeCart(){ cartDrawer.hidden = true; cartOverlay.hidden = true; }
+
+  function renderCart(){
+    const cart = loadCart();
+    const totalQty = cart.reduce((s,i) => s + i.qty, 0);
+    cartCountEl.textContent = totalQty;
+    cartCountEl.hidden = totalQty === 0;
+
+    if (cart.length === 0){
+      cartItemsEl.innerHTML = `<p class="cart-empty">Aapka cart abhi khaali hai.<br>Kuch bracelets add karein ✦</p>`;
+    } else {
+      cartItemsEl.innerHTML = cart.map(item => {
+        const thumb = item.image
+          ? `<img src="${item.image}" alt="${item.name}">`
+          : `<span style="font-size:1.4rem;">✦</span>`;
+        return `
+        <div class="cart-item">
+          <div class="cart-item-thumb">${thumb}</div>
+          <div class="cart-item-info">
+            <div class="ci-name">${item.name}</div>
+            <div class="ci-price">${item.price}</div>
+            <div class="cart-item-qty">
+              <button type="button" class="cart-qty-btn" data-act="dec" data-id="${item.id}">−</button>
+              <span>${item.qty}</span>
+              <button type="button" class="cart-qty-btn" data-act="inc" data-id="${item.id}">+</button>
+            </div>
+          </div>
+          <button type="button" class="cart-item-remove" data-id="${item.id}">Hatao</button>
+        </div>`;
+      }).join('');
+    }
+
+    const subtotal = cart.reduce((s,i) => s + priceToNumber(i.price) * i.qty, 0);
+    cartSubtotalEl.textContent = formatINR(subtotal);
+
+    const waLines = cart.map(i => `${i.qty} x ${i.name} (${i.price})`).join('\n');
+    const waMsg = cart.length
+      ? `Namaste, mujhe yeh order karna hai:\n\n${waLines}\n\nSubtotal: ${formatINR(subtotal)}\n\nKripya aage guide karein.`
+      : `Namaste, mujhe Astro Ajooba se kuch bracelets ke baare mein jaankari chahiye.`;
+    cartCheckoutBtn.href = `https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}`;
+  }
+
+  cartItemsEl.addEventListener('click', function(e){
+    const qtyBtn = e.target.closest('.cart-qty-btn');
+    if (qtyBtn){ changeQty(qtyBtn.dataset.id, qtyBtn.dataset.act === 'inc' ? 1 : -1); return; }
+    const removeBtn = e.target.closest('.cart-item-remove');
+    if (removeBtn){ removeFromCart(removeBtn.dataset.id); }
+  });
+
+  cartBtn.addEventListener('click', openCart);
+  cartCloseBtn.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  renderCart();
 </script>
 
 </body>
