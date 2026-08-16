@@ -31,6 +31,106 @@
   }
   *{box-sizing:border-box;}
   [hidden]{ display:none !important; }
+  /* ---------- SEARCH ---------- */
+  .nav-search-btn{
+    background:none; border:none; cursor:pointer; color:var(--bone);
+    font-size:1.05rem; padding:6px;
+  }
+  .search-overlay{
+    position:fixed; inset:0; z-index:160;
+    background:rgba(12,9,33,0.75); backdrop-filter:blur(3px);
+    display:flex; align-items:flex-start; justify-content:center; padding:80px 20px;
+  }
+  .search-box{
+    width:100%; max-width:560px; background:var(--bone);
+    box-shadow:0 40px 80px -20px rgba(0,0,0,0.5);
+  }
+  .search-input-row{ display:flex; align-items:center; border-bottom:1px solid rgba(30,27,46,0.1); padding:6px 16px; }
+  .search-input-row span{ font-size:1.1rem; color:#8a84a0; }
+  #searchInput{
+    flex:1; border:none; background:none; padding:16px 12px;
+    font-family:'Jost',sans-serif; font-size:1.05rem; color:var(--ink); outline:none;
+  }
+  #searchClose{ background:none; border:none; font-size:1rem; cursor:pointer; color:#8a84a0; padding:8px; }
+  .search-results{ max-height:400px; overflow-y:auto; }
+  .search-result-item{
+    display:block; padding:14px 20px; text-decoration:none; color:var(--ink);
+    border-bottom:1px solid rgba(30,27,46,0.06); transition:background .15s;
+  }
+  .search-result-item:hover{ background:rgba(212,175,106,0.08); }
+  .search-result-item .sr-title{ font-size:0.92rem; font-weight:500; }
+  .search-result-item .sr-cat{
+    font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--gold); margin-top:3px;
+  }
+  .search-empty{ padding:24px 20px; text-align:center; color:#8a84a0; font-size:0.88rem; }
+
+  /* ---------- CHAT WIDGET ---------- */
+  .chat-widget-btn{
+    position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:150;
+    width:56px; height:56px; border-radius:50%;
+    background:var(--gold); color:var(--midnight);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem; cursor:pointer; border:none;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,0.4);
+    animation:chatPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes chatPulse{
+    0%,100%{ box-shadow:0 10px 30px -8px rgba(212,175,106,0.5); }
+    50%{ box-shadow:0 10px 40px -2px rgba(212,175,106,0.95); }
+  }
+  /* ---------- CALL WIDGET (fixed, above chat button) ---------- */
+  .call-widget-btn{
+    position:fixed; right:18px; top:calc(50% - 76px); transform:translateY(-50%); z-index:150;
+    width:52px; height:52px; border-radius:50%;
+    background:#25D366; color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.35rem; text-decoration:none;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,0.4);
+    animation:callPulse 2.5s ease-in-out infinite;
+  }
+  @keyframes callPulse{
+    0%,100%{ box-shadow:0 10px 30px -8px rgba(37,211,102,0.5); }
+    50%{ box-shadow:0 10px 40px -2px rgba(37,211,102,0.95); }
+  }
+  .chat-widget-panel{
+    position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:151;
+    width:320px; max-height:70vh; background:var(--bone);
+    border:1px solid var(--gold); box-shadow:0 30px 60px -18px rgba(0,0,0,0.5);
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  @media (max-width:420px){ .chat-widget-panel{ width:88vw; right:6vw; } }
+  .chat-widget-head{
+    background:linear-gradient(160deg,var(--midnight),var(--plum)); color:var(--bone);
+    padding:14px 16px; display:flex; align-items:center; gap:10px; flex:none;
+  }
+  .chat-widget-avatar{
+    width:36px; height:36px; border-radius:50%; background:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex:none;
+  }
+  .chat-widget-name{ font-size:0.85rem; font-weight:500; }
+  .chat-widget-status{ font-size:0.66rem; color:var(--gold-soft); margin-top:2px; }
+  .chat-widget-close{
+    margin-left:auto; background:none; border:none; color:rgba(243,238,227,0.7);
+    font-size:1rem; cursor:pointer;
+  }
+  .chat-widget-body{ flex:1; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:10px; }
+  .chat-bubble{ max-width:82%; padding:9px 12px; font-size:0.83rem; line-height:1.5; }
+  .chat-bubble.bot{ background:#fff; border:1px solid rgba(30,27,46,0.1); align-self:flex-start; }
+  .chat-bubble.user{ background:var(--gold); color:var(--midnight); align-self:flex-end; }
+  .chat-widget-input-row{ display:flex; border-top:1px solid rgba(30,27,46,0.1); padding:10px; gap:8px; flex:none; }
+  .chat-widget-input-row input{
+    flex:1; border:1px solid rgba(30,27,46,0.15); padding:8px 10px; font-size:0.83rem;
+    font-family:'Jost',sans-serif;
+  }
+  .chat-widget-input-row button{
+    background:var(--midnight); color:var(--bone); border:none; padding:0 14px; cursor:pointer;
+  }
+  .chat-wa-btn{
+    display:inline-block; margin-top:4px; background:#25D366; color:#fff;
+    padding:9px 16px; text-decoration:none; font-size:0.78rem; font-family:'Space Mono',monospace;
+  }
+
   html{scroll-behavior:smooth;}
   body{
     margin:0;
@@ -585,10 +685,20 @@
   .kundali-result{
     display:flex; flex-direction:column; align-items:center; text-align:center; gap:16px;
   }
-  .kundali-chart{ width:190px; height:190px; }
+  .kchart-row{
+    display:flex; gap:24px; justify-content:center; flex-wrap:wrap; width:100%;
+  }
+  .kchart-wrap{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .kundali-chart{ width:150px; height:150px; }
   .kundali-chart .grid-line{ stroke:var(--line); stroke-width:1; fill:none; }
-  .kundali-chart .badge-bg{ fill:var(--midnight); stroke:var(--gold); stroke-width:1.5; }
-  .kundali-chart .badge-glyph{ font-family:'Fraunces',serif; font-size:34px; fill:var(--gold-soft); }
+  .kundali-chart .house-num{
+    font-family:'Space Mono',monospace; font-size:12px; fill:var(--gold-soft);
+    dominant-baseline:middle;
+  }
+  .kchart-label{
+    font-family:'Space Mono',monospace; font-size:0.66rem; letter-spacing:0.03em;
+    text-transform:uppercase; color:rgba(243,238,227,0.6); text-align:center;
+  }
   .kundali-result h3{ font-size:1.4rem; }
   .kundali-result .rname{ font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); }
   .kundali-result .rblurb{ max-width:360px; font-size:0.9rem; line-height:1.6; color:rgba(243,238,227,0.72); }
@@ -914,6 +1024,7 @@
       <li><a href="blog.html">Blog</a></li>
     </ul>
     <div class="nav-actions">
+      <button type="button" id="searchBtn" class="nav-search-btn" aria-label="Search">🔍</button>
       <a href="tel:+919889911210" class="nav-call">📞 +91-9889911210</a>
       <button type="button" id="cartBtn" class="nav-cart-btn" aria-label="Cart">
         🛒 <span id="cartCount" class="cart-count" hidden>0</span>
@@ -1100,7 +1211,7 @@
       </div>
       <a href="https://wa.me/919889911210?text=Namaste%20Acharya%20ji%2C%20maine%20apni%20kundali%20website%20par%20dekh%20li%20hai%2C%20mujhe%20iske%20baare%20mein%20kuch%20sawaal%20poochne%20hain." class="btn-whatsapp" target="_blank" rel="noopener">✆ WhatsApp Karo</a>
     </div>
-    <p class="kundali-note">*Yeh ek simplified rashi-chart hai, jo sirf aapki janam tareekh par based hai. Poori, precise kundali (lagna, grah dashayein, etc.) ke liye kisi professional astrologer se salaah lein.</p>
+    <p class="kundali-note">*Yeh Lagna Chart aur Moon Chart simplified aur illustrative hain — asli, precise Lagna aur Chandra rashi nikaalne ke liye exact birth time, place, aur ek poori ephemeris/panchang calculation chahiye hoti hai, jo yeh tool nahi karta. Poori, precise kundali ke liye kisi professional astrologer se salaah lein.</p>
   </div>
 </section>
 
@@ -1449,12 +1560,12 @@
   ];
 
   const GEMS = [
-    {stone:"Amethyst", note:"Shanti, clarity", desc:"Busy dimaag ko shaant karne aur saaf, level-headed faisle lene mein madad ke liye pehna jaata hai.", c1:"#C9AEE8", c2:"#6B3FA0"},
-    {stone:"Rose Quartz", note:"Pyaar, self-worth", desc:"Khule dil se jeene se juda hai — rishton ke liye aur khud se pyaar ke liye bhi.", c1:"#F6D4DA", c2:"#D98FA0"},
-    {stone:"Tiger's Eye", note:"Himmat, focus", desc:"Ek grounding stone, badi decisions lene se pehle parampara se pehna jaata hai.", c1:"#E8C077", c2:"#8A5A1E"},
-    {stone:"Moonstone", note:"Antaratma ki awaaz", desc:"Chaand ke cycles aur andar ki samajh se juda — naye shuruaat ke liye favourite.", c1:"#EAF0F8", c2:"#9AAFCB"},
-    {stone:"Citrine", note:"Samriddhi", desc:"Vyapari ka patthar kehlaata hai, khushhaali ki taraf ek chhoti si ummeed ke saath pehna jaata hai.", c1:"#F5D97A", c2:"#C1861F"},
-    {stone:"Lapis Lazuli", note:"Sachchai, samajh", desc:"Purane zamane se honest baatcheet aur saaf sochne ke liye kimti maana jaata hai.", c1:"#5D7FC4", c2:"#1F2F5C"}
+    {stone:"Amethyst", note:"Shanti, clarity", desc:"Busy dimaag ko shaant karne aur saaf, level-headed faisle lene mein madad ke liye pehna jaata hai.", img:"images/amethyst-guide.jpg"},
+    {stone:"Rose Quartz", note:"Pyaar, self-worth", desc:"Khule dil se jeene se juda hai — rishton ke liye aur khud se pyaar ke liye bhi.", img:"images/rosequartz-guide.jpg"},
+    {stone:"Tiger's Eye", note:"Himmat, focus", desc:"Ek grounding stone, badi decisions lene se pehle parampara se pehna jaata hai.", img:"images/tigereye-guide.jpg"},
+    {stone:"Moonstone", note:"Antaratma ki awaaz", desc:"Chaand ke cycles aur andar ki samajh se juda — naye shuruaat ke liye favourite.", img:"images/moonstone-guide.jpg"},
+    {stone:"Citrine", note:"Samriddhi", desc:"Vyapari ka patthar kehlaata hai, khushhaali ki taraf ek chhoti si ummeed ke saath pehna jaata hai.", img:"images/citrine-guide.jpg"},
+    {stone:"Lapis Lazuli", note:"Sachchai, samajh", desc:"Purane zamane se honest baatcheet aur saaf sochne ke liye kimti maana jaata hai.", img:"images/lapis-guide.jpg"}
   ];
 
   function braceletSVG(c1, c2, uid){
@@ -1607,9 +1718,9 @@
     card.className = 'card';
     card.style.paddingBottom = '26px';
     card.innerHTML = `
-      <div class="card-body" style="padding-top:24px;">
-        ${gemIconSVG(g.c1, g.c2, gi)}
-        <p class="eyebrow" style="color:var(--gold); margin-top:14px;">${g.note}</p>
+      <div class="card-art"><img src="${g.img}" alt="${g.stone} bracelet" loading="lazy"></div>
+      <div class="card-body" style="padding-top:20px;">
+        <p class="eyebrow" style="color:var(--gold);">${g.note}</p>
         <h3 style="margin-top:8px;">${g.stone}</h3>
         <p class="stone" style="margin-top:10px; line-height:1.6;">${g.desc}</p>
       </div>`;
@@ -1700,15 +1811,48 @@
     });
   });
 
-  function kundaliChartSVG(glyph){
-    return `<svg class="kundali-chart" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-      <rect class="grid-line" x="6" y="6" width="208" height="208"/>
-      <line class="grid-line" x1="6" y1="6" x2="214" y2="214"/>
-      <line class="grid-line" x1="214" y1="6" x2="6" y2="214"/>
-      <polygon class="grid-line" points="110,6 214,110 110,214 6,110"/>
-      <circle class="badge-bg" cx="110" cy="110" r="30"/>
-      <text class="badge-glyph" x="110" y="121" text-anchor="middle">${glyph}</text>
-    </svg>`;
+  function houseKundaliSVG(lagnaIndex, label){
+    // Standard North Indian chart: square + both diagonals + diamond (midpoints)
+    // House numbers placed sequentially clockwise starting from top, following rashi order from lagnaIndex
+    const houseCenters = [
+      [110,45],  // house 1 (top)
+      [55,25],   // house 2
+      [25,55],   // house 3
+      [45,110],  // house 4 (left)
+      [25,165],  // house 5
+      [55,195],  // house 6
+      [110,175], // house 7 (bottom)
+      [165,195], // house 8
+      [195,165], // house 9
+      [175,110], // house 10 (right)
+      [195,55],  // house 11
+      [165,25]   // house 12
+    ];
+    let houseLabels = '';
+    for (let h = 0; h < 12; h++){
+      const rashiNum = ((lagnaIndex + h) % 12) + 1;
+      const [hx, hy] = houseCenters[h];
+      houseLabels += `<text class="house-num" x="${hx}" y="${hy}" text-anchor="middle">${rashiNum}</text>`;
+    }
+    return `<div class="kchart-wrap">
+      <svg class="kundali-chart" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <rect class="grid-line" x="6" y="6" width="208" height="208"/>
+        <line class="grid-line" x1="6" y1="6" x2="214" y2="214"/>
+        <line class="grid-line" x1="214" y1="6" x2="6" y2="214"/>
+        <polygon class="grid-line" points="110,6 214,110 110,214 6,110"/>
+        ${houseLabels}
+      </svg>
+      <p class="kchart-label">${label}</p>
+    </div>`;
+  }
+
+  function computeMoonRashiIndex(y, m, d){
+    // Simplified illustrative approximation — NOT precise astronomical moon position
+    const epoch = new Date(Date.UTC(2000, 0, 1)).getTime();
+    const birth = new Date(Date.UTC(y, m - 1, d)).getTime();
+    const daysSince = Math.floor((birth - epoch) / 86400000);
+    const lunarDayInCycle = ((daysSince % 27.32) + 27.32) % 27.32;
+    return Math.floor(lunarDayInCycle / (27.32 / 12)) % 12;
   }
 
   document.getElementById('kGenerateBtn').addEventListener('click', function(){
@@ -1722,6 +1866,10 @@
     const [y, m, d] = dobVal.split('-').map(Number);
     const rashi = getRashi(m, d);
     if (!rashi) return;
+
+    const lagnaIndex = ZODIAC.findIndex(z => z.sign === rashi.sign);
+    const moonIndex = computeMoonRashiIndex(y, m, d);
+    const moonRashi = ZODIAC[moonIndex];
 
     const match = PRODUCTS.find(p => p.sign === rashi.sign);
     const productHTML = match
@@ -1780,7 +1928,10 @@
       </div>` : '';
 
     kundaliResult.innerHTML = `
-      ${kundaliChartSVG(rashi.glyph)}
+      <div class="kchart-row">
+        ${houseKundaliSVG(lagnaIndex, `Lagna Chart (${rashi.sign})`)}
+        ${houseKundaliSVG(moonIndex, `Chandra/Moon Chart (${moonRashi.sign})`)}
+      </div>
       <p class="rname">${name} Ki Kundali</p>
       <h3>${rashi.sign} · ${rashi.hindi}</h3>
       <p class="stone" style="color:var(--gold-soft);">${rashi.dates} · Ruling Stone: ${rashi.stone}</p>
@@ -2119,6 +2270,196 @@
     function closeBirthday(){ overlay.hidden = true; }
     closeBtn.addEventListener('click', closeBirthday);
     overlay.addEventListener('click', function(e){ if (e.target === overlay) closeBirthday(); });
+  })();
+
+  // ---------- Voice Welcome Message ----------
+  (function(){
+    let hasSpoken = false;
+    function speakWelcome(){
+      if (hasSpoken) return;
+      if (!('speechSynthesis' in window)) return;
+      hasSpoken = true;
+      const msg = new SpeechSynthesisUtterance('Astro Ajooba mein aapka swagat hai. Radhey Radhey!');
+      msg.lang = 'hi-IN';
+      msg.rate = 0.95;
+      msg.pitch = 1;
+      window.speechSynthesis.speak(msg);
+    }
+    // Try immediately on load
+    window.addEventListener('load', speakWelcome);
+    // Fallback: many browsers block audio until the user interacts with the page —
+    // this ensures the welcome still plays on the first click/tap/keypress if load-time playback was blocked
+    ['click', 'touchstart', 'keydown'].forEach(evt => {
+      document.addEventListener(evt, speakWelcome, { once: true });
+    });
+  })();
+</script>
+
+
+<div id="searchOverlay" class="search-overlay" hidden>
+  <div class="search-box">
+    <div class="search-input-row">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="Rashi, tools, products dhoondein...">
+      <button type="button" id="searchClose">✕</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<a href="tel:+919889911210" class="call-widget-btn" aria-label="Call">📞</a>
+<button type="button" id="chatWidgetBtn" class="chat-widget-btn" aria-label="Chat">💬</button>
+<div id="chatWidgetPanel" class="chat-widget-panel" hidden>
+  <div class="chat-widget-head">
+    <div class="chat-widget-avatar">🔮</div>
+    <div>
+      <p class="chat-widget-name">Acharya Shubham Shastri</p>
+      <p class="chat-widget-status">Kundali Sahayak</p>
+    </div>
+    <button type="button" id="chatWidgetClose" class="chat-widget-close">✕</button>
+  </div>
+  <div id="chatWidgetBody" class="chat-widget-body"></div>
+  <div class="chat-widget-input-row" id="chatWidgetInputRow">
+    <input type="text" id="chatWidgetInput" placeholder="Yahan likhein...">
+    <button type="button" id="chatWidgetSend">➤</button>
+  </div>
+</div>
+
+<script>
+  // ---------- Search ----------
+  const SEARCH_INDEX = [
+    {t:"Aries / Mesh Horoscope", u:"rashi/aries.html", c:"Rashi"},
+    {t:"Taurus / Vrishabh Horoscope", u:"rashi/taurus.html", c:"Rashi"},
+    {t:"Gemini / Mithun Horoscope", u:"rashi/gemini.html", c:"Rashi"},
+    {t:"Cancer / Kark Horoscope", u:"rashi/cancer.html", c:"Rashi"},
+    {t:"Leo / Simha Horoscope", u:"rashi/leo.html", c:"Rashi"},
+    {t:"Virgo / Kanya Horoscope", u:"rashi/virgo.html", c:"Rashi"},
+    {t:"Libra / Tula Horoscope", u:"rashi/libra.html", c:"Rashi"},
+    {t:"Scorpio / Vrishchik Horoscope", u:"rashi/scorpio.html", c:"Rashi"},
+    {t:"Sagittarius / Dhanu Horoscope", u:"rashi/sagittarius.html", c:"Rashi"},
+    {t:"Capricorn / Makar Horoscope", u:"rashi/capricorn.html", c:"Rashi"},
+    {t:"Aquarius / Kumbh Horoscope", u:"rashi/aquarius.html", c:"Rashi"},
+    {t:"Pisces / Meen Horoscope", u:"rashi/pisces.html", c:"Rashi"},
+    {t:"Free Kundali Tool", u:"index.html#kundali", c:"Tool"},
+    {t:"Kundali Milan (Match Making)", u:"index.html#milan", c:"Tool"},
+    {t:"Aaj Ka Panchang", u:"index.html#panchang", c:"Tool"},
+    {t:"Love Calculator", u:"love-calculator.html", c:"Tool"},
+    {t:"Daily Horoscope (Sab Rashi)", u:"daily-horoscope.html", c:"Tool"},
+    {t:"Gemstone Guide", u:"index.html#guide", c:"Guide"},
+    {t:"Poora Shop", u:"shop.html", c:"Shop"},
+    {t:"Bracelets", u:"index.html#shop", c:"Shop"},
+    {t:"Pyrite Bracelet & More", u:"shop.html#cat-bracelets", c:"Product"},
+    {t:"Anklets (Payal)", u:"shop.html#cat-anklets", c:"Product"},
+    {t:"Loose Stones", u:"shop.html#cat-stones", c:"Product"},
+    {t:"Rings", u:"shop.html#cat-rings", c:"Product"},
+    {t:"Pendants & Lockets", u:"shop.html#cat-pendants", c:"Product"},
+    {t:"Blog", u:"blog.html", c:"Blog"},
+    {t:"Hamare Baare Mein", u:"index.html#about", c:"Info"}
+  ];
+
+  const searchBtn = document.getElementById('searchBtn');
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchInput = document.getElementById('searchInput');
+  const searchClose = document.getElementById('searchClose');
+  const searchResults = document.getElementById('searchResults');
+
+  function renderSearchResults(query){
+    const q = query.trim().toLowerCase();
+    if (!q){ searchResults.innerHTML = ''; return; }
+    const matches = SEARCH_INDEX.filter(item => item.t.toLowerCase().includes(q) || item.c.toLowerCase().includes(q));
+    if (matches.length === 0){
+      searchResults.innerHTML = '<p class="search-empty">Kuch nahi mila. Kisi aur naam se try karein.</p>';
+      return;
+    }
+    searchResults.innerHTML = matches.slice(0, 10).map(item => `
+      <a href="${item.u}" class="search-result-item">
+        <div class="sr-title">${item.t}</div>
+        <div class="sr-cat">${item.c}</div>
+      </a>`).join('');
+  }
+
+  if (searchBtn){
+    searchBtn.addEventListener('click', () => {
+      searchOverlay.hidden = false;
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+      setTimeout(() => searchInput.focus(), 50);
+    });
+    searchClose.addEventListener('click', () => { searchOverlay.hidden = true; });
+    searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) searchOverlay.hidden = true; });
+    searchInput.addEventListener('input', () => renderSearchResults(searchInput.value));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !searchOverlay.hidden) searchOverlay.hidden = true;
+    });
+  }
+
+  // ---------- Chat Widget (collects Kundali details, connects via WhatsApp) ----------
+  (function(){
+    const btn = document.getElementById('chatWidgetBtn');
+    const panel = document.getElementById('chatWidgetPanel');
+    const closeBtn = document.getElementById('chatWidgetClose');
+    const body = document.getElementById('chatWidgetBody');
+    const input = document.getElementById('chatWidgetInput');
+    const sendBtn = document.getElementById('chatWidgetSend');
+    if (!btn || !panel) return;
+
+    const STEPS = ['name','dob','tob','pob'];
+    let stepIndex = 0;
+    let answers = {};
+    let started = false;
+    let finished = false;
+
+    function addBubble(html, who){
+      const div = document.createElement('div');
+      div.className = 'chat-bubble ' + who;
+      div.innerHTML = html;
+      body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function startChat(){
+      if (started) return;
+      started = true;
+      addBubble("Namaste 🙏 Main aapki Kundali details lekar seedha Acharya Shubham Shastri tak pahunchane mein madad karunga. Sabse pehle, aapka <strong>naam</strong> kya hai?", 'bot');
+    }
+
+    function handleAnswer(text){
+      if (finished || !text.trim()) return;
+      addBubble(text, 'user');
+      const key = STEPS[stepIndex];
+      answers[key] = text.trim();
+      stepIndex++;
+
+      if (stepIndex === 1){
+        setTimeout(() => addBubble(`${answers.name} ji, aapki <strong>janam tareekh</strong> kya hai? (DD-MM-YYYY)`, 'bot'), 400);
+      } else if (stepIndex === 2){
+        setTimeout(() => addBubble("Janam ka <strong>samay</strong> kya tha? (jaise 14:30 ya 2:30 PM)", 'bot'), 400);
+      } else if (stepIndex === 3){
+        setTimeout(() => addBubble("Aap kahaan <strong>paida</strong> hue the? (Shehar, Rajya)", 'bot'), 400);
+      } else if (stepIndex === 4){
+        finished = true;
+        setTimeout(() => {
+          addBubble("Shukriya! 🙏 Aapki details mil gayi. Neeche button dabakar seedha Acharya Shubham Shastri se WhatsApp par judiye — wo aapki poori kundali nikaal kar bhejenge.", 'bot');
+          const waMsg = `Namaste Acharya ji, mujhe apni kundali chahiye.\n\nNaam: ${answers.name}\nJanam Tareekh: ${answers.dob}\nJanam Samay: ${answers.tob}\nJanam Sthaan: ${answers.pob}`;
+          const waLink = `https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}`;
+          const linkDiv = document.createElement('div');
+          linkDiv.innerHTML = `<a href="${waLink}" target="_blank" rel="noopener" class="chat-wa-btn">✆ WhatsApp Pe Judein</a>`;
+          body.appendChild(linkDiv);
+          body.scrollTop = body.scrollHeight;
+          document.getElementById('chatWidgetInputRow').style.display = 'none';
+        }, 400);
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) startChat();
+    });
+    closeBtn.addEventListener('click', () => { panel.hidden = true; });
+    sendBtn.addEventListener('click', () => { handleAnswer(input.value); input.value = ''; });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter'){ handleAnswer(input.value); input.value = ''; }
+    });
   })();
 </script>
 

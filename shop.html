@@ -50,8 +50,9 @@
   }
   .shop-card:hover{ transform:translateY(-4px); box-shadow:0 24px 44px -26px rgba(43,27,78,0.35); }
   .shop-card-art{
-    height:150px; display:flex; align-items:center; justify-content:center; position:relative;
+    height:170px; overflow:hidden; position:relative;
   }
+  .shop-card-art img{ width:100%; height:100%; object-fit:cover; display:block; }
   .shop-card-body{ padding:16px 16px 18px; flex:1; display:flex; flex-direction:column; }
   .shop-card-body h4{ font-size:0.95rem; font-weight:500; line-height:1.35; }
   .shop-card-body .scb-sub{ margin-top:3px; font-size:0.76rem; color:#8a84a0; }
@@ -82,6 +83,7 @@
       <li><a href="blog.html">Blog</a></li>
     </ul>
     <div class="nav-actions">
+      <button type="button" id="searchBtn" class="nav-search-btn" aria-label="Search">🔍</button>
       <a href="tel:+919889911210" class="nav-call">📞 +91-9889911210</a>
       <button type="button" id="cartBtn" class="nav-cart-btn" aria-label="Cart">
         🛒 <span id="cartCount" class="cart-count" hidden>0</span>
@@ -166,46 +168,46 @@
       cat: "bracelets", label: "Bracelets", icon: "📿",
       desc: "Har rashi ke ruling stone se bane, adjustable fit ke saath.",
       items: [
-        { id:"pyrite-bracelet", name:"Pyrite Bracelet", sub:"Dhan-Samriddhi", price:1299, c1:"#E8C94A", c2:"#8A6D14" },
-        { id:"black-tourmaline-bracelet", name:"Black Tourmaline Bracelet", sub:"Suraksha", price:1199, c1:"#4A4A4A", c2:"#0D0D0D" },
-        { id:"clear-quartz-bracelet", name:"Clear Quartz Bracelet", sub:"Spashtata", price:999, c1:"#F4F4F4", c2:"#B8B8B8" },
-        { id:"green-aventurine-bracelet", name:"Green Aventurine Bracelet", sub:"Khushkismati", price:1099, c1:"#A8D5A0", c2:"#3F7A4A" }
+        { id:"pyrite-bracelet", name:"Pyrite Bracelet", sub:"Dhan-Samriddhi", price:1299, img:"images/shop/pyrite-bracelet.jpg" },
+        { id:"black-tourmaline-bracelet", name:"Black Tourmaline Bracelet", sub:"Suraksha", price:1199, img:"images/shop/black-tourmaline-bracelet.jpg" },
+        { id:"clear-quartz-bracelet", name:"Clear Quartz Bracelet", sub:"Spashtata", price:999, img:"images/shop/clear-quartz-bracelet.jpg" },
+        { id:"green-aventurine-bracelet", name:"Green Aventurine Bracelet", sub:"Khushkismati", price:1099, img:"images/shop/green-aventurine-bracelet.jpg" }
       ]
     },
     {
       cat: "anklets", label: "Anklets (Payal)", icon: "🦶",
       desc: "Gemstone payal — traditional style mein spiritual touch ke saath.",
       items: [
-        { id:"pyrite-payal", name:"Pyrite Payal", sub:"Dhan Aakarshan", price:1599, c1:"#E8C94A", c2:"#8A6D14" },
-        { id:"rose-quartz-payal", name:"Rose Quartz Payal", sub:"Prem", price:1499, c1:"#F6D4DA", c2:"#D98FA0" },
-        { id:"turquoise-payal", name:"Turquoise Payal", sub:"Yatra Suraksha", price:1399, c1:"#7FCDCD", c2:"#2E7D7D" }
+        { id:"pyrite-payal", name:"Pyrite Payal", sub:"Dhan Aakarshan", price:1599, img:"images/shop/pyrite-payal.jpg" },
+        { id:"rose-quartz-payal", name:"Rose Quartz Payal", sub:"Prem", price:1499, img:"images/shop/rose-quartz-payal.jpg" },
+        { id:"turquoise-payal", name:"Turquoise Payal", sub:"Yatra Suraksha", price:1399, img:"images/shop/turquoise-payal.jpg" }
       ]
     },
     {
       cat: "stones", label: "Loose Stones", icon: "💎",
       desc: "Raw aur tumbled gemstones — ghar, office, ya puja sthaan ke liye.",
       items: [
-        { id:"raw-amethyst-cluster", name:"Raw Amethyst Cluster", sub:"Shanti ke liye", price:899, c1:"#C9AEE8", c2:"#6B3FA0" },
-        { id:"tumbled-citrine-set", name:"Tumbled Citrine (Set of 5)", sub:"Samriddhi ke liye", price:699, c1:"#F5D97A", c2:"#C1861F" },
-        { id:"selenite-wand", name:"Selenite Wand", sub:"Cleansing ke liye", price:599, c1:"#F5F3ED", c2:"#D8D3C4" },
-        { id:"clear-quartz-point", name:"Clear Quartz Point", sub:"Energy Amplifier", price:799, c1:"#F4F4F4", c2:"#B8B8B8" }
+        { id:"raw-amethyst-cluster", name:"Raw Amethyst Cluster", sub:"Shanti ke liye", price:899, img:"images/shop/raw-amethyst-cluster.jpg" },
+        { id:"tumbled-citrine-set", name:"Tumbled Citrine (Set of 5)", sub:"Samriddhi ke liye", price:699, img:"images/shop/tumbled-citrine-set.jpg" },
+        { id:"selenite-wand", name:"Selenite Wand", sub:"Cleansing ke liye", price:599, img:"images/shop/selenite-wand.jpg" },
+        { id:"clear-quartz-point", name:"Clear Quartz Point", sub:"Energy Amplifier", price:799, img:"images/shop/clear-quartz-point.jpg" }
       ]
     },
     {
       cat: "rings", label: "Rings", icon: "💍",
       desc: "Adjustable gemstone rings — daily wear ke liye perfect.",
       items: [
-        { id:"tigereye-ring", name:"Adjustable Tiger's Eye Ring", sub:"Himmat", price:899, c1:"#E8C077", c2:"#8A5A1E" },
-        { id:"amethyst-ring", name:"Amethyst Statement Ring", sub:"Shanti", price:1099, c1:"#C9AEE8", c2:"#6B3FA0" }
+        { id:"tigereye-ring", name:"Adjustable Tiger's Eye Ring", sub:"Himmat", price:899, img:"images/shop/tigereye-ring.jpg" },
+        { id:"amethyst-ring", name:"Amethyst Statement Ring", sub:"Shanti", price:1099, img:"images/shop/amethyst-ring.jpg" }
       ]
     },
     {
       cat: "pendants", label: "Pendants & Lockets", icon: "🔱",
       desc: "Spiritual pendants — Om, Evil Eye, aur gemstone lockets.",
       items: [
-        { id:"om-pendant", name:"Om Pendant (Rudraksha)", sub:"Aadhyatmik Suraksha", price:799, c1:"#D9B45C", c2:"#7A5A1E" },
-        { id:"evil-eye-pendant", name:"Evil Eye Protection Pendant", sub:"Buri Nazar Se Bachao", price:699, c1:"#5D9BD9", c2:"#1E3A5F" },
-        { id:"moonstone-locket", name:"Moonstone Locket", sub:"Antaratma Ki Awaaz", price:999, c1:"#EAF0F8", c2:"#9AAFCB" }
+        { id:"om-pendant", name:"Om Pendant (Rudraksha)", sub:"Aadhyatmik Suraksha", price:799, img:"images/shop/om-pendant.jpg" },
+        { id:"evil-eye-pendant", name:"Evil Eye Protection Pendant", sub:"Buri Nazar Se Bachao", price:699, img:"images/shop/evil-eye-pendant.jpg" },
+        { id:"moonstone-locket", name:"Moonstone Locket", sub:"Antaratma Ki Awaaz", price:999, img:"images/shop/moonstone-locket.jpg" }
       ]
     }
   ];
@@ -284,23 +286,19 @@
 
     const itemGrid = grid.querySelector('.shop-grid');
     group.items.forEach((item, ii) => {
-      const uid = group.cat + '-' + ii;
-      const art = (group.cat === 'bracelets' || group.cat === 'anklets')
-        ? strandArtSVG(item.c1, item.c2, uid)
-        : gemArtSVG(item.c1, item.c2, uid);
       const saleNum = Math.max(0, item.price - DISCOUNT_AMOUNT);
       const stock = randomStock();
       const card = document.createElement('div');
       card.className = 'shop-card';
       card.innerHTML = `
-        <div class="shop-card-art" style="background:linear-gradient(150deg, ${item.c1}22, ${item.c2}22);">${art}</div>
+        <div class="shop-card-art"><img src="${item.img}" alt="${item.name}" loading="lazy"></div>
         <div class="shop-card-body">
           <h4>${item.name}</h4>
           <p class="scb-sub">${item.sub}</p>
           <div class="shop-card-foot">
             <div class="price-wrap"><span class="price-old">${formatINR(item.price)}</span><span class="price-new">${formatINR(saleNum)}</span></div>
             <span class="stock-badge">⚡ Sirf ${stock} pieces bache!</span>
-            <button type="button" class="shop-add-btn" data-id="${item.id}" data-name="${item.name}" data-price="${formatINR(saleNum)}">Cart Mein Daalo</button>
+            <button type="button" class="shop-add-btn" data-id="${item.id}" data-name="${item.name}" data-price="${formatINR(saleNum)}" data-img="${item.img}">Cart Mein Daalo</button>
           </div>
         </div>`;
       itemGrid.appendChild(card);
@@ -310,7 +308,7 @@
   shopSections.addEventListener('click', function(e){
     const btn = e.target.closest('.shop-add-btn');
     if (!btn) return;
-    addToCart({ id: btn.dataset.id, name: btn.dataset.name, price: btn.dataset.price, image: '' });
+    addToCart({ id: btn.dataset.id, name: btn.dataset.name, price: btn.dataset.price, image: btn.dataset.img });
     const original = btn.textContent;
     btn.textContent = 'Add Ho Gaya ✓';
     setTimeout(() => { btn.textContent = original; }, 1200);
@@ -411,6 +409,174 @@
   cartOverlay.addEventListener('click', closeCart);
 
   renderCart();
+</script>
+
+
+<div id="searchOverlay" class="search-overlay" hidden>
+  <div class="search-box">
+    <div class="search-input-row">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="Rashi, tools, products dhoondein...">
+      <button type="button" id="searchClose">✕</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<a href="tel:+919889911210" class="call-widget-btn" aria-label="Call">📞</a>
+<button type="button" id="chatWidgetBtn" class="chat-widget-btn" aria-label="Chat">💬</button>
+<div id="chatWidgetPanel" class="chat-widget-panel" hidden>
+  <div class="chat-widget-head">
+    <div class="chat-widget-avatar">🔮</div>
+    <div>
+      <p class="chat-widget-name">Acharya Shubham Shastri</p>
+      <p class="chat-widget-status">Kundali Sahayak</p>
+    </div>
+    <button type="button" id="chatWidgetClose" class="chat-widget-close">✕</button>
+  </div>
+  <div id="chatWidgetBody" class="chat-widget-body"></div>
+  <div class="chat-widget-input-row" id="chatWidgetInputRow">
+    <input type="text" id="chatWidgetInput" placeholder="Yahan likhein...">
+    <button type="button" id="chatWidgetSend">➤</button>
+  </div>
+</div>
+
+<script>
+  // ---------- Search ----------
+  const SEARCH_INDEX = [
+    {t:"Aries / Mesh Horoscope", u:"rashi/aries.html", c:"Rashi"},
+    {t:"Taurus / Vrishabh Horoscope", u:"rashi/taurus.html", c:"Rashi"},
+    {t:"Gemini / Mithun Horoscope", u:"rashi/gemini.html", c:"Rashi"},
+    {t:"Cancer / Kark Horoscope", u:"rashi/cancer.html", c:"Rashi"},
+    {t:"Leo / Simha Horoscope", u:"rashi/leo.html", c:"Rashi"},
+    {t:"Virgo / Kanya Horoscope", u:"rashi/virgo.html", c:"Rashi"},
+    {t:"Libra / Tula Horoscope", u:"rashi/libra.html", c:"Rashi"},
+    {t:"Scorpio / Vrishchik Horoscope", u:"rashi/scorpio.html", c:"Rashi"},
+    {t:"Sagittarius / Dhanu Horoscope", u:"rashi/sagittarius.html", c:"Rashi"},
+    {t:"Capricorn / Makar Horoscope", u:"rashi/capricorn.html", c:"Rashi"},
+    {t:"Aquarius / Kumbh Horoscope", u:"rashi/aquarius.html", c:"Rashi"},
+    {t:"Pisces / Meen Horoscope", u:"rashi/pisces.html", c:"Rashi"},
+    {t:"Free Kundali Tool", u:"index.html#kundali", c:"Tool"},
+    {t:"Kundali Milan (Match Making)", u:"index.html#milan", c:"Tool"},
+    {t:"Aaj Ka Panchang", u:"index.html#panchang", c:"Tool"},
+    {t:"Love Calculator", u:"love-calculator.html", c:"Tool"},
+    {t:"Daily Horoscope (Sab Rashi)", u:"daily-horoscope.html", c:"Tool"},
+    {t:"Gemstone Guide", u:"index.html#guide", c:"Guide"},
+    {t:"Poora Shop", u:"shop.html", c:"Shop"},
+    {t:"Bracelets", u:"index.html#shop", c:"Shop"},
+    {t:"Pyrite Bracelet & More", u:"shop.html#cat-bracelets", c:"Product"},
+    {t:"Anklets (Payal)", u:"shop.html#cat-anklets", c:"Product"},
+    {t:"Loose Stones", u:"shop.html#cat-stones", c:"Product"},
+    {t:"Rings", u:"shop.html#cat-rings", c:"Product"},
+    {t:"Pendants & Lockets", u:"shop.html#cat-pendants", c:"Product"},
+    {t:"Blog", u:"blog.html", c:"Blog"},
+    {t:"Hamare Baare Mein", u:"index.html#about", c:"Info"}
+  ];
+
+  const searchBtn = document.getElementById('searchBtn');
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchInput = document.getElementById('searchInput');
+  const searchClose = document.getElementById('searchClose');
+  const searchResults = document.getElementById('searchResults');
+
+  function renderSearchResults(query){
+    const q = query.trim().toLowerCase();
+    if (!q){ searchResults.innerHTML = ''; return; }
+    const matches = SEARCH_INDEX.filter(item => item.t.toLowerCase().includes(q) || item.c.toLowerCase().includes(q));
+    if (matches.length === 0){
+      searchResults.innerHTML = '<p class="search-empty">Kuch nahi mila. Kisi aur naam se try karein.</p>';
+      return;
+    }
+    searchResults.innerHTML = matches.slice(0, 10).map(item => `
+      <a href="${item.u}" class="search-result-item">
+        <div class="sr-title">${item.t}</div>
+        <div class="sr-cat">${item.c}</div>
+      </a>`).join('');
+  }
+
+  if (searchBtn){
+    searchBtn.addEventListener('click', () => {
+      searchOverlay.hidden = false;
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+      setTimeout(() => searchInput.focus(), 50);
+    });
+    searchClose.addEventListener('click', () => { searchOverlay.hidden = true; });
+    searchOverlay.addEventListener('click', (e) => { if (e.target === searchOverlay) searchOverlay.hidden = true; });
+    searchInput.addEventListener('input', () => renderSearchResults(searchInput.value));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !searchOverlay.hidden) searchOverlay.hidden = true;
+    });
+  }
+
+  // ---------- Chat Widget (collects Kundali details, connects via WhatsApp) ----------
+  (function(){
+    const btn = document.getElementById('chatWidgetBtn');
+    const panel = document.getElementById('chatWidgetPanel');
+    const closeBtn = document.getElementById('chatWidgetClose');
+    const body = document.getElementById('chatWidgetBody');
+    const input = document.getElementById('chatWidgetInput');
+    const sendBtn = document.getElementById('chatWidgetSend');
+    if (!btn || !panel) return;
+
+    const STEPS = ['name','dob','tob','pob'];
+    let stepIndex = 0;
+    let answers = {};
+    let started = false;
+    let finished = false;
+
+    function addBubble(html, who){
+      const div = document.createElement('div');
+      div.className = 'chat-bubble ' + who;
+      div.innerHTML = html;
+      body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function startChat(){
+      if (started) return;
+      started = true;
+      addBubble("Namaste 🙏 Main aapki Kundali details lekar seedha Acharya Shubham Shastri tak pahunchane mein madad karunga. Sabse pehle, aapka <strong>naam</strong> kya hai?", 'bot');
+    }
+
+    function handleAnswer(text){
+      if (finished || !text.trim()) return;
+      addBubble(text, 'user');
+      const key = STEPS[stepIndex];
+      answers[key] = text.trim();
+      stepIndex++;
+
+      if (stepIndex === 1){
+        setTimeout(() => addBubble(`${answers.name} ji, aapki <strong>janam tareekh</strong> kya hai? (DD-MM-YYYY)`, 'bot'), 400);
+      } else if (stepIndex === 2){
+        setTimeout(() => addBubble("Janam ka <strong>samay</strong> kya tha? (jaise 14:30 ya 2:30 PM)", 'bot'), 400);
+      } else if (stepIndex === 3){
+        setTimeout(() => addBubble("Aap kahaan <strong>paida</strong> hue the? (Shehar, Rajya)", 'bot'), 400);
+      } else if (stepIndex === 4){
+        finished = true;
+        setTimeout(() => {
+          addBubble("Shukriya! 🙏 Aapki details mil gayi. Neeche button dabakar seedha Acharya Shubham Shastri se WhatsApp par judiye — wo aapki poori kundali nikaal kar bhejenge.", 'bot');
+          const waMsg = `Namaste Acharya ji, mujhe apni kundali chahiye.\n\nNaam: ${answers.name}\nJanam Tareekh: ${answers.dob}\nJanam Samay: ${answers.tob}\nJanam Sthaan: ${answers.pob}`;
+          const waLink = `https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}`;
+          const linkDiv = document.createElement('div');
+          linkDiv.innerHTML = `<a href="${waLink}" target="_blank" rel="noopener" class="chat-wa-btn">✆ WhatsApp Pe Judein</a>`;
+          body.appendChild(linkDiv);
+          body.scrollTop = body.scrollHeight;
+          document.getElementById('chatWidgetInputRow').style.display = 'none';
+        }, 400);
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) startChat();
+    });
+    closeBtn.addEventListener('click', () => { panel.hidden = true; });
+    sendBtn.addEventListener('click', () => { handleAnswer(input.value); input.value = ''; });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter'){ handleAnswer(input.value); input.value = ''; }
+    });
+  })();
 </script>
 
 </body>
