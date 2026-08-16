@@ -30,6 +30,7 @@
     --max: 1180px;
   }
   *{box-sizing:border-box;}
+  [hidden]{ display:none !important; }
   html{scroll-behavior:smooth;}
   body{
     margin:0;
@@ -68,6 +69,78 @@
   :focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
 
   /* ---------- NAV ---------- */
+  /* ---------- SAWAN SPECIAL BAR ---------- */
+  /* ---------- BIRTHDAY WISH (special, date-limited) ---------- */
+  .birthday-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(12,9,33,0.75); backdrop-filter:blur(3px);
+    display:flex; align-items:center; justify-content:center; padding:20px;
+    animation:bdFadeIn .3s ease;
+  }
+  @keyframes bdFadeIn{ from{ opacity:0; } to{ opacity:1; } }
+  .birthday-card{
+    position:relative; max-width:440px; width:100%;
+    background:linear-gradient(160deg, var(--midnight), var(--plum));
+    border:1px solid var(--gold); padding:44px 34px 36px;
+    text-align:center; color:var(--bone);
+    box-shadow:0 40px 80px -20px rgba(0,0,0,0.6), 0 0 60px -10px rgba(212,175,106,0.4);
+    animation:bdPopIn .4s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes bdPopIn{ from{ opacity:0; transform:scale(0.9) translateY(10px); } to{ opacity:1; transform:scale(1) translateY(0); } }
+  .birthday-close{
+    position:absolute; top:14px; right:14px; background:none; border:none;
+    color:rgba(243,238,227,0.6); font-size:1.1rem; cursor:pointer; padding:4px;
+  }
+  .birthday-close:hover{ color:var(--gold); }
+  .birthday-emoji{ font-size:2.2rem; }
+  .birthday-eyebrow{
+    margin-top:10px; font-family:'Space Mono',monospace; font-size:0.68rem;
+    letter-spacing:0.18em; text-transform:uppercase; color:var(--gold);
+  }
+  .birthday-title{
+    margin-top:10px; font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:1.9rem; color:var(--gold-soft);
+  }
+  .birthday-msg{
+    margin-top:18px; font-size:0.94rem; line-height:1.75; color:rgba(243,238,227,0.85);
+  }
+  .birthday-from{
+    margin-top:18px; font-family:'Space Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.04em; color:var(--rose);
+  }
+
+  .sawan-bar{
+    background:linear-gradient(90deg, #C1392B, #E3A83D, #C1392B);
+    color:#fff; text-align:center;
+    padding:9px 16px;
+    display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;
+    font-family:'Space Mono',monospace; font-size:0.74rem; letter-spacing:0.02em;
+  }
+  .sawan-bar strong{ font-weight:700; }
+  .sawan-bar a{
+    color:#fff; text-decoration:none; border:1px solid rgba(255,255,255,0.6);
+    padding:3px 12px; white-space:nowrap; transition:background .2s;
+  }
+  .sawan-bar a:hover{ background:rgba(255,255,255,0.2); }
+  @media (max-width:560px){ .sawan-bar{ font-size:0.66rem; padding:8px 10px; gap:8px; } }
+
+  /* ---------- SAWAN QUOTE SECTION ---------- */
+  .sawan-quote{
+    background:linear-gradient(160deg, var(--midnight), var(--plum));
+    color:var(--bone); padding:60px 0; text-align:center; position:relative; overflow:hidden;
+  }
+  .sawan-quote .trishul{ font-size:2.2rem; color:var(--gold); }
+  .sawan-quote blockquote{
+    margin:18px auto 0; max-width:640px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.15rem,2.6vw,1.5rem); line-height:1.7; color:var(--gold-soft);
+  }
+  .sawan-quote cite{
+    display:block; margin-top:16px; font-style:normal;
+    font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:rgba(243,238,227,0.55);
+  }
+
   header.site{
     position:sticky; top:0; z-index:50;
     background:rgba(20,17,43,0.92);
@@ -374,6 +447,17 @@
     padding:16px 22px 0;
   }
   .price{ font-family:'Space Mono',monospace; font-size:0.95rem; color:var(--ink); }
+  .price-wrap{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .price-old{
+    font-family:'Space Mono',monospace; font-size:0.78rem; color:#a39dae;
+    text-decoration:line-through;
+  }
+  .price-new{ font-family:'Space Mono',monospace; font-size:0.95rem; color:var(--ruby); font-weight:700; }
+  .stock-badge{
+    display:block; margin-top:6px;
+    font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.02em;
+    color:var(--ruby); text-transform:uppercase;
+  }
   .add-link{
     font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.08em;
     text-transform:uppercase; text-decoration:none; color:var(--midnight);
@@ -707,6 +791,33 @@
   .about p{ margin-top:18px; line-height:1.75; color:#4a4560; }
   .about p+p{ margin-top:14px; }
 
+  .astrologer-bio{
+    max-width:720px; margin:56px auto 0; text-align:center;
+    padding:44px 40px; background:linear-gradient(160deg, var(--midnight), var(--plum));
+    color:var(--bone); position:relative;
+  }
+  @media (max-width:600px){ .astrologer-bio{ padding:32px 22px; } }
+  .astrologer-bio h3{
+    margin-top:10px; font-family:'Fraunces',serif; font-size:1.7rem; color:var(--gold-soft);
+  }
+  .ab-quote{
+    margin-top:18px; font-family:'Fraunces',serif; font-style:italic; font-size:1.05rem;
+    color:var(--gold-soft); line-height:1.6; max-width:520px; margin-left:auto; margin-right:auto;
+  }
+  .ab-para{
+    margin-top:20px; font-size:0.92rem; line-height:1.75; color:rgba(243,238,227,0.78);
+    text-align:left;
+  }
+  .ab-highlights{
+    margin-top:28px; display:flex; justify-content:center; gap:28px; flex-wrap:wrap;
+  }
+  .ab-highlight{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.03em;
+    color:var(--gold-soft); text-transform:uppercase;
+  }
+  .ab-h-icon{ font-size:1.5rem; }
+
   /* ---------- TESTIMONIALS ---------- */
   .quotes{ background:var(--bone); }
   .quote-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
@@ -770,11 +881,28 @@
 </head>
 <body>
 
+<div class="sawan-bar">
+  <span>🔱 <strong>Sawan Special</strong> — Jab Tak Sawan Chalega, Astrology Advice Bhi <strong>FREE</strong> Hai!</span>
+  <a href="https://wa.me/919889911210?text=Namaste%20Acharya%20ji%2C%20Sawan%20Special%20offer%20ke%20under%20mujhe%20FREE%20astrology%20advice%20chahiye." target="_blank" rel="noopener">✆ WhatsApp Karo</a>
+</div>
+
+<div id="birthdayOverlay" class="birthday-overlay" hidden>
+  <div class="birthday-card">
+    <button type="button" id="birthdayCloseBtn" class="birthday-close" aria-label="Close">✕</button>
+    <div class="birthday-emoji">🎂🎉✨</div>
+    <p class="birthday-eyebrow">✦ Aaj Ka Khaas Din ✦</p>
+    <h2 class="birthday-title">Happy Birthday Jyoti!</h2>
+    <p class="birthday-msg">Aaj ke din, sitare aur grah aapke liye khaas dua lekar aaye hain. Aane wala saal aapke liye khushiyon, safalta, aur naye avsaron se bhara ho. Aapka bhavishya roshan ho, aur har sapna sach ho. 🌟</p>
+    <p class="birthday-from">— Astro Ajooba Parivar Ki Taraf Se ❤️</p>
+  </div>
+</div>
+
 <header class="site">
   <nav class="wrap">
     <a href="#" class="logo"><span class="glyph">✦</span> ASTRO AJOOBA</a>
     <ul class="nav-links">
-      <li><a href="#shop">Shop Karo</a></li>
+      <li><a href="#shop">Bracelets</a></li>
+      <li><a href="shop.html">Poora Shop</a></li>
       <li><a href="daily-horoscope.html">Aaj Ka Horoscope</a></li>
       <li><a href="#zodiac">Rashi</a></li>
       <li><a href="#kundali">Kundali</a></li>
@@ -846,6 +974,16 @@
   </div>
 </section>
 
+<section class="sawan-quote">
+  <div class="wrap">
+    <div class="trishul">🔱</div>
+    <blockquote>
+      "जटा में गंगा, माथे पे चांद, गले में सांप, हाथ में त्रिशूल — भोलेनाथ की यही महिमा, सावन के हर पल में झलकती है। जहाँ भक्ति है, वहाँ भोलेनाथ का वास है।"
+    </blockquote>
+    <cite>✦ Har Har Mahadev ✦</cite>
+  </div>
+</section>
+
 <div class="strip">
   <div class="wrap">
     <span>Haath se banaye gemstones</span>
@@ -899,7 +1037,7 @@
         <img src="images/astrologer-square.jpg" alt="Acharya Shubham Shastri">
         <div>
           <p class="ab-name">Acharya Shubham Shastri</p>
-          <p class="ab-title">Vedic Astrologer</p>
+          <p class="ab-title">Paramparik Vedic Astrologer</p>
         </div>
       </div>
     </div>
@@ -915,7 +1053,7 @@
           <div class="k-step" data-step="1">
             <span class="k-step-num">01 / 04</span>
             <h3>Sabse pehle — aapka naam kya hai?</h3>
-            <input type="text" id="kName" class="k-input" placeholder="Yahan apna naam likhein">
+            <input type="text" id="kName" class="k-input" placeholder="Yahan apna naam likhein" required>
             <div class="k-actions">
               <span></span>
               <button type="button" class="btn-primary k-next" data-next="2">Aage Badhein →</button>
@@ -924,7 +1062,7 @@
           <div class="k-step" data-step="2">
             <span class="k-step-num">02 / 04</span>
             <h3 id="kStep2Title">Aapki janam tareekh kya hai?</h3>
-            <input type="date" id="kDob" class="k-input">
+            <input type="date" id="kDob" class="k-input" required>
             <div class="k-actions">
               <button type="button" class="k-back" data-back="1">← Peeche</button>
               <button type="button" class="btn-primary k-next" data-next="3">Aage Badhein →</button>
@@ -932,18 +1070,17 @@
           </div>
           <div class="k-step" data-step="3">
             <span class="k-step-num">03 / 04</span>
-            <h3>Janam ka samay yaad hai? <span class="opt">(optional)</span></h3>
-            <input type="time" id="kTob" class="k-input">
+            <h3>Janam ka samay kya hai?</h3>
+            <input type="time" id="kTob" class="k-input" required>
             <div class="k-actions">
               <button type="button" class="k-back" data-back="2">← Peeche</button>
               <button type="button" class="btn-primary k-next" data-next="4">Aage Badhein →</button>
             </div>
-            <p class="k-hint">Pata nahi? Koi baat nahi, isse khaali chhod ke aage badh sakte hain.</p>
           </div>
           <div class="k-step" data-step="4">
             <span class="k-step-num">04 / 04</span>
-            <h3>Aap kahaan paida hue the? <span class="opt">(optional)</span></h3>
-            <input type="text" id="kPob" class="k-input" placeholder="Shehar, Rajya">
+            <h3>Aap kahaan paida hue the?</h3>
+            <input type="text" id="kPob" class="k-input" placeholder="Shehar, Rajya" required>
             <div class="k-actions">
               <button type="button" class="k-back" data-back="3">← Peeche</button>
               <button type="button" class="btn-primary" id="kGenerateBtn">✦ Kundali Nikaalo</button>
@@ -958,10 +1095,10 @@
         <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.87 9.87 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.4c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 5.83 2.41 8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.25-8.25 8.25zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.41 1.02 2.58.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
       </div>
       <div class="wa-text">
-        <h3>Free Kundali WhatsApp Pe Bhi Paayein</h3>
-        <p>Apni details WhatsApp pe bhejein — Acharya Shubham Shastri khud aapki free kundali nikaal ke bhejenge.</p>
+        <h3>Koi Sawaal Ho Toh WhatsApp Karein</h3>
+        <p>Aapki poori kundali aur bhavishya fal upar website par hi mil jaata hai — free, turant. WhatsApp karna zaroori nahi hai; sirf tab karein jab kuch aur samajhna ho ya extra guidance chahiye.</p>
       </div>
-      <a href="https://wa.me/919889911210?text=Namaste%20Acharya%20ji%2C%20mujhe%20meri%20FREE%20kundali%20chahiye.%0A%0ANaam%3A%20%0AJanam%20Tareekh%3A%20%0AJanam%20Samay%3A%20%0AJanam%20Sthaan%3A%20" class="btn-whatsapp" target="_blank" rel="noopener">✆ WhatsApp Karo</a>
+      <a href="https://wa.me/919889911210?text=Namaste%20Acharya%20ji%2C%20maine%20apni%20kundali%20website%20par%20dekh%20li%20hai%2C%20mujhe%20iske%20baare%20mein%20kuch%20sawaal%20poochne%20hain." class="btn-whatsapp" target="_blank" rel="noopener">✆ WhatsApp Karo</a>
     </div>
     <p class="kundali-note">*Yeh ek simplified rashi-chart hai, jo sirf aapki janam tareekh par based hai. Poori, precise kundali (lagna, grah dashayein, etc.) ke liye kisi professional astrologer se salaah lein.</p>
   </div>
@@ -988,7 +1125,7 @@
         <img src="images/astrologer-square.jpg" alt="Acharya Shubham Shastri">
         <div>
           <p class="ab-name">Acharya Shubham Shastri</p>
-          <p class="ab-title">Vedic Astrologer</p>
+          <p class="ab-title">Paramparik Vedic Astrologer</p>
         </div>
       </div>
     </div>
@@ -996,14 +1133,18 @@
     <div class="milan-box">
       <div class="milan-person">
         <span class="milan-label">♂ Ladka</span>
-        <input type="text" id="mBoyName" class="k-input" placeholder="Ladke ka naam">
-        <input type="date" id="mBoyDob" class="k-input">
+        <input type="text" id="mBoyName" class="k-input" placeholder="Ladke ka naam" required>
+        <input type="date" id="mBoyDob" class="k-input" required>
+        <input type="time" id="mBoyTob" class="k-input" required>
+        <input type="text" id="mBoyPob" class="k-input" placeholder="Janam Sthaan (Shehar, Rajya)" required>
       </div>
       <div class="milan-vs">✦</div>
       <div class="milan-person">
         <span class="milan-label">♀ Ladki</span>
-        <input type="text" id="mGirlName" class="k-input" placeholder="Ladki ka naam">
-        <input type="date" id="mGirlDob" class="k-input">
+        <input type="text" id="mGirlName" class="k-input" placeholder="Ladki ka naam" required>
+        <input type="date" id="mGirlDob" class="k-input" required>
+        <input type="time" id="mGirlTob" class="k-input" required>
+        <input type="text" id="mGirlPob" class="k-input" placeholder="Janam Sthaan (Shehar, Rajya)" required>
       </div>
     </div>
     <div class="milan-submit-row">
@@ -1071,10 +1212,10 @@
 <section id="about" class="about">
   <div class="wrap">
     <div class="about-visual">
-      <img src="images/astrologer-portrait.jpg" alt="Acharya Shubham Shastri, Vedic Astrologer">
+      <img src="images/astrologer-portrait.jpg" alt="Acharya Shubham Shastri, Paramparik Vedic Astrologer">
       <div class="av-caption">
         <p class="an">Acharya Shubham Shastri</p>
-        <p class="at">Vedic Astrologer</p>
+        <p class="at">Paramparik Vedic Astrologer</p>
       </div>
     </div>
     <div>
@@ -1083,6 +1224,29 @@
       <p>Astro Ajooba shuru hui ek kitchen table se, ek bead tray aur ek purani ephemeris ke saath. Humein laga jewelry sirf metal aur patthar se zyada kuch hold kar sakti hai — timing, niyat, aur thoda sa aasmaan bhi.</p>
       <p>Har bracelet order pe, small batches mein, haath se piroya jaata hai — gemstones ka selection size se nahi, clarity aur color se hota hai. Do charts kabhi ek jaise nahi hote — aur na hi unhe banane waale haath.</p>
       <p>Hamari rashi aur kundali guidance <strong>Acharya Shubham Shastri</strong> ke astrology gyaan se curate ki gayi hai, taaki har bracelet ke peeche ek soch-samjhi astrological wajah ho.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="astrologer-bio">
+      <p class="eyebrow" style="text-align:center;">Hamare Astrologer</p>
+      <h3>Acharya Shubham Shastri</h3>
+      <p class="ab-quote">"Jyotish sirf bhavishya batane ka zariya nahi — apne aap ko aur apne raaste ko behtar samajhne ka ek tareeka hai."</p>
+      <p class="ab-para">Acharya Shubham Shastri ek <strong>paramparik Vedic astrologer</strong> hain — unki jyotish vidya unke parivar mein peedhi-dar-peedhi chali aa rahi hai. Bachpan se hi unhone apne dada aur pita se Jyotish Shastra, Kundali analysis, aur ratna vigyan (gemstone science) ka gehra gyaan seekha. Aaj tak sainkdon parivaron ko unhone sahi disha, sahi ratna, aur sahi salaah di hai — hamesha sacchai aur seva ki bhavna ke saath.</p>
+      <div class="ab-highlights">
+        <div class="ab-highlight">
+          <span class="ab-h-icon">🕉️</span>
+          <span>Paramparik Gyaan</span>
+        </div>
+        <div class="ab-highlight">
+          <span class="ab-h-icon">🙏</span>
+          <span>Sacchi, Sahi Salaah</span>
+        </div>
+        <div class="ab-highlight">
+          <span class="ab-h-icon">💬</span>
+          <span>Personal Attention</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1130,6 +1294,7 @@
     <div>
       <h4>Shop</h4>
       <ul>
+        <li><a href="shop.html">Poora Shop (Anklets, Stones, Rings)</a></li>
         <li><a href="#shop">Saare Bracelets</a></li>
         <li><a href="#zodiac">Rashi Ke Hisaab Se</a></li>
         <li><a href="#guide">Gemstone Guide</a></li>
@@ -1284,12 +1449,12 @@
   ];
 
   const GEMS = [
-    {stone:"Amethyst", note:"Shanti, clarity", desc:"Busy dimaag ko shaant karne aur saaf, level-headed faisle lene mein madad ke liye pehna jaata hai."},
-    {stone:"Rose Quartz", note:"Pyaar, self-worth", desc:"Khule dil se jeene se juda hai — rishton ke liye aur khud se pyaar ke liye bhi."},
-    {stone:"Tiger's Eye", note:"Himmat, focus", desc:"Ek grounding stone, badi decisions lene se pehle parampara se pehna jaata hai."},
-    {stone:"Moonstone", note:"Antaratma ki awaaz", desc:"Chaand ke cycles aur andar ki samajh se juda — naye shuruaat ke liye favourite."},
-    {stone:"Citrine", note:"Samriddhi", desc:"Vyapari ka patthar kehlaata hai, khushhaali ki taraf ek chhoti si ummeed ke saath pehna jaata hai."},
-    {stone:"Lapis Lazuli", note:"Sachchai, samajh", desc:"Purane zamane se honest baatcheet aur saaf sochne ke liye kimti maana jaata hai."}
+    {stone:"Amethyst", note:"Shanti, clarity", desc:"Busy dimaag ko shaant karne aur saaf, level-headed faisle lene mein madad ke liye pehna jaata hai.", c1:"#C9AEE8", c2:"#6B3FA0"},
+    {stone:"Rose Quartz", note:"Pyaar, self-worth", desc:"Khule dil se jeene se juda hai — rishton ke liye aur khud se pyaar ke liye bhi.", c1:"#F6D4DA", c2:"#D98FA0"},
+    {stone:"Tiger's Eye", note:"Himmat, focus", desc:"Ek grounding stone, badi decisions lene se pehle parampara se pehna jaata hai.", c1:"#E8C077", c2:"#8A5A1E"},
+    {stone:"Moonstone", note:"Antaratma ki awaaz", desc:"Chaand ke cycles aur andar ki samajh se juda — naye shuruaat ke liye favourite.", c1:"#EAF0F8", c2:"#9AAFCB"},
+    {stone:"Citrine", note:"Samriddhi", desc:"Vyapari ka patthar kehlaata hai, khushhaali ki taraf ek chhoti si ummeed ke saath pehna jaata hai.", c1:"#F5D97A", c2:"#C1861F"},
+    {stone:"Lapis Lazuli", note:"Sachchai, samajh", desc:"Purane zamane se honest baatcheet aur saaf sochne ke liye kimti maana jaata hai.", c1:"#5D7FC4", c2:"#1F2F5C"}
   ];
 
   function braceletSVG(c1, c2, uid){
@@ -1350,6 +1515,21 @@
 
   // product grid
   const productGrid = document.getElementById('productGrid');
+  const DISCOUNT_AMOUNT = 500;
+
+  function applyDiscount(priceStr){
+    const original = Number(String(priceStr).replace(/[^0-9]/g, '')) || 0;
+    const sale = Math.max(0, original - DISCOUNT_AMOUNT);
+    return {
+      originalStr: '₹' + original.toLocaleString('en-IN'),
+      saleStr: '₹' + sale.toLocaleString('en-IN')
+    };
+  }
+  function randomStockLine(){
+    const n = Math.random() < 0.5 ? 3 : 4;
+    return `⚡ Sirf ${n} pieces bache!`;
+  }
+
   PRODUCTS.forEach((p, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -1357,6 +1537,7 @@
       ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
       : braceletSVG(p.color1, p.color2, idx);
     const artStyle = p.image ? '' : `style="background:linear-gradient(150deg, ${p.color1}22, ${p.color2}22);"`;
+    const { originalStr, saleStr } = applyDiscount(p.price);
     card.innerHTML = `
       <div class="card-art" ${artStyle}>
         <span class="card-tag">${p.sign}</span>
@@ -1367,8 +1548,11 @@
         <p class="stone">${p.stone} · Adjustable fit</p>
       </div>
       <div class="card-foot">
-        <span class="price">${p.price}</span>
-        <a href="#" class="add-link" data-product-id="${p.id}">Cart Mein Daalo</a>
+        <div>
+          <div class="price-wrap"><span class="price-old">${originalStr}</span><span class="price-new">${saleStr}</span></div>
+          <span class="stock-badge">${randomStockLine()}</span>
+        </div>
+        <a href="#" class="add-link" data-product-id="${p.id}" data-sale-price="${saleStr}">Cart Mein Daalo</a>
       </div>`;
     productGrid.appendChild(card);
   });
@@ -1378,7 +1562,7 @@
       e.preventDefault();
       const product = PRODUCTS.find(p => p.id === this.dataset.productId);
       if (!product) return;
-      addToCart(product);
+      addToCart({ ...product, price: this.dataset.salePrice });
       const original = this.textContent;
       this.textContent = 'Add Ho Gaya ✓';
       setTimeout(() => { this.textContent = original; }, 1200);
@@ -1400,14 +1584,32 @@
   });
 
   // gem guide grid
+  function gemIconSVG(c1, c2, uid){
+    const gid = `gemgrad-${uid}`;
+    return `<svg viewBox="0 0 100 100" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="${gid}" x1="20%" y1="0%" x2="80%" y2="100%">
+          <stop offset="0%" stop-color="${c1}"/>
+          <stop offset="100%" stop-color="${c2}"/>
+        </linearGradient>
+      </defs>
+      <polygon points="50,4 78,26 68,90 32,90 22,26" fill="url(#${gid})" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
+      <polygon points="50,4 78,26 50,40" fill="#fff" opacity="0.35"/>
+      <polygon points="22,26 50,40 32,90" fill="#000" opacity="0.12"/>
+      <polygon points="78,26 68,90 50,40" fill="#000" opacity="0.22"/>
+      <polygon points="50,4 22,26 78,26" fill="#fff" opacity="0.18"/>
+    </svg>`;
+  }
+
   const gemGuideGrid = document.getElementById('gemGuideGrid');
-  GEMS.forEach(g => {
+  GEMS.forEach((g, gi) => {
     const card = document.createElement('div');
     card.className = 'card';
     card.style.paddingBottom = '26px';
     card.innerHTML = `
       <div class="card-body" style="padding-top:24px;">
-        <p class="eyebrow" style="color:var(--gold);">${g.note}</p>
+        ${gemIconSVG(g.c1, g.c2, gi)}
+        <p class="eyebrow" style="color:var(--gold); margin-top:14px;">${g.note}</p>
         <h3 style="margin-top:8px;">${g.stone}</h3>
         <p class="stone" style="margin-top:10px; line-height:1.6;">${g.desc}</p>
       </div>`;
@@ -1475,6 +1677,10 @@
       if (kCurrent === 2){
         if (!kDobInput.value){ flagError(kDobInput); return; }
       }
+      if (kCurrent === 3){
+        const tobInput = document.getElementById('kTob');
+        if (!tobInput.value){ flagError(tobInput); return; }
+      }
       showKStep(target);
     });
   });
@@ -1508,6 +1714,10 @@
   document.getElementById('kGenerateBtn').addEventListener('click', function(){
     const dobVal = kDobInput.value;
     if (!dobVal){ showKStep(2); flagError(kDobInput); return; }
+    const tobVal = document.getElementById('kTob').value;
+    if (!tobVal){ showKStep(3); flagError(document.getElementById('kTob')); return; }
+    const pobInput = document.getElementById('kPob');
+    if (!pobInput.value.trim()){ showKStep(4); flagError(pobInput); return; }
     const name = kNameInput.value.trim() || "Aapki";
     const [y, m, d] = dobVal.split('-').map(Number);
     const rashi = getRashi(m, d);
@@ -1524,7 +1734,7 @@
          </div>`
       : `<div class="kundali-product">
            <div class="kp-name">${rashi.stone} bracelet jald aa raha hai</div>
-           <a href="#shop" class="add-link">Poora Shop</a>
+           <a href="shop.html" class="add-link">Poora Shop Dekho</a>
          </div>`;
 
     const bf = BHAVISHYA_FAL[rashi.sign];
@@ -1646,19 +1856,34 @@
   const milanWaLink = document.getElementById('milanWaLink');
 
   document.getElementById('milanBtn').addEventListener('click', function(){
-    const boyName = document.getElementById('mBoyName').value.trim() || "Ladka";
-    const girlName = document.getElementById('mGirlName').value.trim() || "Ladki";
-    const boyDob = document.getElementById('mBoyDob').value;
-    const girlDob = document.getElementById('mGirlDob').value;
+    const boyNameInput = document.getElementById('mBoyName');
+    const girlNameInput = document.getElementById('mGirlName');
+    const boyDobInput = document.getElementById('mBoyDob');
+    const girlDobInput = document.getElementById('mGirlDob');
+    const boyTobInput = document.getElementById('mBoyTob');
+    const girlTobInput = document.getElementById('mGirlTob');
+    const boyPobInput = document.getElementById('mBoyPob');
+    const girlPobInput = document.getElementById('mGirlPob');
 
-    if (!boyDob || !girlDob){
-      [document.getElementById('mBoyDob'), document.getElementById('mGirlDob')].forEach(inp => {
-        if (!inp.value){
-          inp.classList.remove('k-error'); void inp.offsetWidth; inp.classList.add('k-error');
-        }
-      });
-      return;
-    }
+    const requiredInputs = [boyNameInput, girlNameInput, boyDobInput, girlDobInput, boyTobInput, girlTobInput, boyPobInput, girlPobInput];
+    let hasError = false;
+    requiredInputs.forEach(inp => {
+      const isEmpty = inp.type === 'text' ? !inp.value.trim() : !inp.value;
+      if (isEmpty){
+        inp.classList.remove('k-error'); void inp.offsetWidth; inp.classList.add('k-error');
+        hasError = true;
+      }
+    });
+    if (hasError) return;
+
+    const boyName = boyNameInput.value.trim();
+    const girlName = girlNameInput.value.trim();
+    const boyDob = boyDobInput.value;
+    const girlDob = girlDobInput.value;
+    const boyTob = boyTobInput.value;
+    const girlTob = girlTobInput.value;
+    const boyPob = boyPobInput.value.trim();
+    const girlPob = girlPobInput.value.trim();
 
     const [by, bm, bd] = boyDob.split('-').map(Number);
     const [gy, gm, gd] = girlDob.split('-').map(Number);
@@ -1693,7 +1918,7 @@
     milanResult.hidden = false;
     milanResult.scrollIntoView({behavior:'smooth', block:'center'});
 
-    const waMsg = `Namaste Acharya ji, hum apni kundali match karwana chahte hain.\n\nLadka: ${boyName} (${boyRashi.sign}, ${boyDob})\nLadki: ${girlName} (${girlRashi.sign}, ${girlDob})\n\nDetailed Guna Milan bhejein.`;
+    const waMsg = `Namaste Acharya ji, hum apni kundali match karwana chahte hain.\n\nLadka: ${boyName}\n  Janam Tareekh: ${boyDob}\n  Janam Samay: ${boyTob}\n  Janam Sthaan: ${boyPob}\n  Rashi: ${boyRashi.sign}\n\nLadki: ${girlName}\n  Janam Tareekh: ${girlDob}\n  Janam Samay: ${girlTob}\n  Janam Sthaan: ${girlPob}\n  Rashi: ${girlRashi.sign}\n\nDetailed Guna Milan bhejein.`;
     milanWaLink.href = `https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}`;
   });
 
@@ -1879,6 +2104,22 @@
   cartOverlay.addEventListener('click', closeCart);
 
   renderCart();
+
+  // ---------- Birthday Wish (auto-shows only on 16 Aug 2026, auto-hides after) ----------
+  (function(){
+    const BIRTHDAY_DATE = '2026-08-16';
+    const todayStr = new Date().toISOString().slice(0, 10);
+    if (todayStr !== BIRTHDAY_DATE) return;
+
+    const overlay = document.getElementById('birthdayOverlay');
+    const closeBtn = document.getElementById('birthdayCloseBtn');
+    if (!overlay) return;
+
+    overlay.hidden = false;
+    function closeBirthday(){ overlay.hidden = true; }
+    closeBtn.addEventListener('click', closeBirthday);
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) closeBirthday(); });
+  })();
 </script>
 
 </body>

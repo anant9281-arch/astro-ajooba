@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poora Shop — Bracelets, Anklets, Stones, Rings, Pendants | Astro Ajooba</title>
+<meta name="description" content="Astro Ajooba ka poora shop — gemstone bracelets, anklets, loose stones, rings, aur pendants. Rashi ke hisaab se, market-realistic pricing ke saath.">
+<link rel="canonical" href="https://YOUR-DOMAIN-HERE/shop.html">
+<meta name="google-site-verification" content="PASTE-YOUR-VERIFICATION-CODE-HERE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300..700,0..1&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .shop-hero{
+    background:
+      radial-gradient(circle at 78% 20%, rgba(212,175,106,0.16), transparent 45%),
+      linear-gradient(160deg, var(--midnight) 0%, var(--plum) 100%);
+    color:var(--bone); padding:64px 0 44px; position:relative; overflow:hidden;
+  }
+  .shop-hero .wrap{ position:relative; z-index:1; }
+  .shop-hero h1{ font-size:clamp(2rem,4.5vw,2.8rem); font-style:italic; font-weight:400; }
+  .shop-hero p{ margin-top:12px; max-width:520px; color:rgba(243,238,227,0.75); line-height:1.7; }
+
+  .shop-tabs{
+    position:sticky; top:78px; z-index:40;
+    background:var(--bone); border-bottom:1px solid rgba(30,27,46,0.1);
+    padding:16px 0; overflow-x:auto;
+  }
+  .shop-tabs-inner{ display:flex; gap:10px; }
+  .shop-tab{
+    flex:none; background:none; border:1px solid rgba(30,27,46,0.15); cursor:pointer;
+    padding:9px 18px; font-family:'Space Mono',monospace; font-size:0.74rem; letter-spacing:0.04em;
+    text-transform:uppercase; color:var(--ink); white-space:nowrap; transition:background .2s, color .2s, border-color .2s;
+  }
+  .shop-tab.active, .shop-tab:hover{ background:var(--midnight); color:var(--bone); border-color:var(--midnight); }
+
+  .shop-cat-section{ padding:52px 0 10px; }
+  .shop-cat-head{ margin-bottom:28px; }
+  .shop-cat-head h2{ font-size:clamp(1.4rem,2.8vw,1.8rem); }
+  .shop-cat-head p{ margin-top:8px; color:#4a4560; font-size:0.92rem; }
+
+  .shop-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  @media (max-width:1000px){ .shop-grid{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:760px){ .shop-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:480px){ .shop-grid{ grid-template-columns:1fr; } }
+
+  .shop-card{
+    background:#fff; border:1px solid rgba(30,27,46,0.08);
+    transition:transform .25s, box-shadow .25s; display:flex; flex-direction:column;
+  }
+  .shop-card:hover{ transform:translateY(-4px); box-shadow:0 24px 44px -26px rgba(43,27,78,0.35); }
+  .shop-card-art{
+    height:150px; display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .shop-card-body{ padding:16px 16px 18px; flex:1; display:flex; flex-direction:column; }
+  .shop-card-body h4{ font-size:0.95rem; font-weight:500; line-height:1.35; }
+  .shop-card-body .scb-sub{ margin-top:3px; font-size:0.76rem; color:#8a84a0; }
+  .shop-card-foot{ margin-top:auto; padding-top:12px; }
+  .shop-add-btn{
+    width:100%; margin-top:10px; background:var(--midnight); color:var(--bone); border:none;
+    padding:9px; font-family:'Space Mono',monospace; font-size:0.66rem; letter-spacing:0.05em;
+    text-transform:uppercase; cursor:pointer; transition:background .2s;
+  }
+  .shop-add-btn:hover{ background:var(--gold); color:var(--midnight); }
+</style>
+</head>
+<body>
+
+<div class="sawan-bar">
+  <span>🔱 <strong>Sawan Special</strong> — Jab Tak Sawan Chalega, Astrology Advice Bhi <strong>FREE</strong> Hai!</span>
+  <a href="https://wa.me/919889911210?text=Namaste%20Acharya%20ji%2C%20Sawan%20Special%20offer%20ke%20under%20mujhe%20FREE%20astrology%20advice%20chahiye." target="_blank" rel="noopener">✆ WhatsApp Karo</a>
+</div>
+
+<header class="site">
+  <nav class="wrap">
+    <a href="index.html" class="logo"><span class="glyph">✦</span> ASTRO AJOOBA</a>
+    <ul class="nav-links">
+      <li><a href="shop.html">Poora Shop</a></li>
+      <li><a href="daily-horoscope.html">Aaj Ka Horoscope</a></li>
+      <li><a href="index.html#kundali">Kundali</a></li>
+      <li><a href="love-calculator.html">Love Calculator</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="tel:+919889911210" class="nav-call">📞 +91-9889911210</a>
+      <button type="button" id="cartBtn" class="nav-cart-btn" aria-label="Cart">
+        🛒 <span id="cartCount" class="cart-count" hidden>0</span>
+      </button>
+      <a href="index.html#shop" class="nav-cta">Homepage</a>
+    </div>
+  </nav>
+</header>
+
+<div id="cartOverlay" class="cart-overlay" hidden></div>
+<aside id="cartDrawer" class="cart-drawer" hidden>
+  <div class="cart-drawer-head">
+    <h3>Aapka Cart</h3>
+    <button type="button" id="cartCloseBtn" class="cart-close" aria-label="Close cart">✕</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-subtotal-row">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">₹0</span>
+    </div>
+    <a href="#" id="cartCheckoutBtn" class="btn-whatsapp cart-checkout-btn" target="_blank" rel="noopener">✆ WhatsApp Pe Order Karo</a>
+    <p class="cart-note">Order confirm karne ke liye humari team WhatsApp par aapse baat karegi — payment aur delivery details wahin discuss honge.</p>
+  </div>
+</aside>
+
+<section class="shop-hero">
+  <div class="wrap">
+    <p class="eyebrow">Poora Collection</p>
+    <h1>Astro Ajooba Ka Poora Shop</h1>
+    <p>Bracelets, anklets, loose stones, rings, aur pendants — astrology mein jo bhi popular hai, sab ek jagah. Rashi ke hisaab se chuno, ya jo pasand aaye wahi le lo.</p>
+  </div>
+</section>
+
+<div class="shop-tabs">
+  <div class="wrap shop-tabs-inner" id="shopTabs"></div>
+</div>
+
+<div id="shopSections"></div>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a href="index.html" class="logo"><span class="glyph">✦</span> ASTRO AJOOBA</a>
+      <p>Gemstone bracelets, rashi ke hisaab se charted aur haath se banaye gaye. Small-batch, order pe banta hai.</p>
+      <p class="foot-phone"><a href="tel:+919889911210">📞 +91-9889911210</a></p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="shop.html">Poora Shop</a></li>
+        <li><a href="index.html#zodiac">Rashi Ke Hisaab Se</a></li>
+        <li><a href="index.html#guide">Gemstone Guide</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#about">Hamare Baare Mein</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="tel:+919889911210">Contact Karo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="index.html#kundali">Kundali Tool</a></li>
+        <li><a href="index.html#milan">Kundali Milan</a></li>
+        <li><a href="love-calculator.html">Love Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Astro Ajooba. Saare rights reserved.</span>
+    <span>Delhi, India · +91-9889911210</span>
+  </div>
+</footer>
+
+<script>
+  const CATALOG = [
+    {
+      cat: "bracelets", label: "Bracelets", icon: "📿",
+      desc: "Har rashi ke ruling stone se bane, adjustable fit ke saath.",
+      items: [
+        { id:"pyrite-bracelet", name:"Pyrite Bracelet", sub:"Dhan-Samriddhi", price:1299, c1:"#E8C94A", c2:"#8A6D14" },
+        { id:"black-tourmaline-bracelet", name:"Black Tourmaline Bracelet", sub:"Suraksha", price:1199, c1:"#4A4A4A", c2:"#0D0D0D" },
+        { id:"clear-quartz-bracelet", name:"Clear Quartz Bracelet", sub:"Spashtata", price:999, c1:"#F4F4F4", c2:"#B8B8B8" },
+        { id:"green-aventurine-bracelet", name:"Green Aventurine Bracelet", sub:"Khushkismati", price:1099, c1:"#A8D5A0", c2:"#3F7A4A" }
+      ]
+    },
+    {
+      cat: "anklets", label: "Anklets (Payal)", icon: "🦶",
+      desc: "Gemstone payal — traditional style mein spiritual touch ke saath.",
+      items: [
+        { id:"pyrite-payal", name:"Pyrite Payal", sub:"Dhan Aakarshan", price:1599, c1:"#E8C94A", c2:"#8A6D14" },
+        { id:"rose-quartz-payal", name:"Rose Quartz Payal", sub:"Prem", price:1499, c1:"#F6D4DA", c2:"#D98FA0" },
+        { id:"turquoise-payal", name:"Turquoise Payal", sub:"Yatra Suraksha", price:1399, c1:"#7FCDCD", c2:"#2E7D7D" }
+      ]
+    },
+    {
+      cat: "stones", label: "Loose Stones", icon: "💎",
+      desc: "Raw aur tumbled gemstones — ghar, office, ya puja sthaan ke liye.",
+      items: [
+        { id:"raw-amethyst-cluster", name:"Raw Amethyst Cluster", sub:"Shanti ke liye", price:899, c1:"#C9AEE8", c2:"#6B3FA0" },
+        { id:"tumbled-citrine-set", name:"Tumbled Citrine (Set of 5)", sub:"Samriddhi ke liye", price:699, c1:"#F5D97A", c2:"#C1861F" },
+        { id:"selenite-wand", name:"Selenite Wand", sub:"Cleansing ke liye", price:599, c1:"#F5F3ED", c2:"#D8D3C4" },
+        { id:"clear-quartz-point", name:"Clear Quartz Point", sub:"Energy Amplifier", price:799, c1:"#F4F4F4", c2:"#B8B8B8" }
+      ]
+    },
+    {
+      cat: "rings", label: "Rings", icon: "💍",
+      desc: "Adjustable gemstone rings — daily wear ke liye perfect.",
+      items: [
+        { id:"tigereye-ring", name:"Adjustable Tiger's Eye Ring", sub:"Himmat", price:899, c1:"#E8C077", c2:"#8A5A1E" },
+        { id:"amethyst-ring", name:"Amethyst Statement Ring", sub:"Shanti", price:1099, c1:"#C9AEE8", c2:"#6B3FA0" }
+      ]
+    },
+    {
+      cat: "pendants", label: "Pendants & Lockets", icon: "🔱",
+      desc: "Spiritual pendants — Om, Evil Eye, aur gemstone lockets.",
+      items: [
+        { id:"om-pendant", name:"Om Pendant (Rudraksha)", sub:"Aadhyatmik Suraksha", price:799, c1:"#D9B45C", c2:"#7A5A1E" },
+        { id:"evil-eye-pendant", name:"Evil Eye Protection Pendant", sub:"Buri Nazar Se Bachao", price:699, c1:"#5D9BD9", c2:"#1E3A5F" },
+        { id:"moonstone-locket", name:"Moonstone Locket", sub:"Antaratma Ki Awaaz", price:999, c1:"#EAF0F8", c2:"#9AAFCB" }
+      ]
+    }
+  ];
+
+  const DISCOUNT_AMOUNT = 500;
+  function formatINR(n){ return '₹' + n.toLocaleString('en-IN'); }
+  function randomStock(){ return Math.random() < 0.5 ? 3 : 4; }
+
+  function gemArtSVG(c1, c2, uid){
+    const gid = `sgrad-${uid}`;
+    return `<svg viewBox="0 0 100 100" width="70" height="70" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="${gid}" x1="20%" y1="0%" x2="80%" y2="100%">
+          <stop offset="0%" stop-color="${c1}"/>
+          <stop offset="100%" stop-color="${c2}"/>
+        </linearGradient>
+      </defs>
+      <polygon points="50,4 78,26 68,90 32,90 22,26" fill="url(#${gid})" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
+      <polygon points="50,4 78,26 50,40" fill="#fff" opacity="0.35"/>
+      <polygon points="22,26 50,40 32,90" fill="#000" opacity="0.12"/>
+      <polygon points="78,26 68,90 50,40" fill="#000" opacity="0.22"/>
+    </svg>`;
+  }
+  function strandArtSVG(c1, c2, uid){
+    const count = 11;
+    const pts = [];
+    for (let i = 0; i < count; i++){
+      const t = (i / (count - 1)) * 2 - 1;
+      pts.push([60 + t * 46, 34 + 20 * t * t]);
+    }
+    let defs = '', beads = '';
+    pts.forEach((p, i) => {
+      const isAccent = i % 4 === 0;
+      const base = isAccent ? '#C6A15B' : (i % 2 === 0 ? c1 : c2);
+      const r = isAccent ? 6 : 7.5;
+      const gid = `bead-${uid}-${i}`;
+      defs += `<radialGradient id="${gid}" cx="32%" cy="26%" r="75%"><stop offset="0%" stop-color="#fff" stop-opacity="0.85"/><stop offset="42%" stop-color="${base}"/><stop offset="100%" stop-color="${base}" stop-opacity="0.55"/></radialGradient>`;
+      beads += `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${r}" fill="url(#${gid})" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>`;
+    });
+    return `<svg viewBox="0 0 120 90" width="100" height="76" xmlns="http://www.w3.org/2000/svg">
+      <defs>${defs}</defs>
+      <ellipse cx="60" cy="78" rx="46" ry="5" fill="#000" opacity="0.08"/>
+      ${beads}
+    </svg>`;
+  }
+
+  const shopTabs = document.getElementById('shopTabs');
+  const shopSections = document.getElementById('shopSections');
+
+  CATALOG.forEach((group, gi) => {
+    const tab = document.createElement('button');
+    tab.type = 'button';
+    tab.className = 'shop-tab' + (gi === 0 ? ' active' : '');
+    tab.textContent = `${group.icon} ${group.label}`;
+    tab.addEventListener('click', () => {
+      document.getElementById('cat-' + group.cat).scrollIntoView({behavior:'smooth', block:'start'});
+      document.querySelectorAll('.shop-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+    shopTabs.appendChild(tab);
+
+    const section = document.createElement('section');
+    section.className = 'shop-cat-section';
+    section.id = 'cat-' + group.cat;
+    const grid = document.createElement('div');
+    grid.className = 'wrap';
+    grid.innerHTML = `
+      <div class="shop-cat-head">
+        <p class="eyebrow">${group.icon} ${group.label}</p>
+        <h2>${group.label}</h2>
+        <p>${group.desc}</p>
+      </div>
+      <div class="shop-grid"></div>`;
+    section.appendChild(grid);
+    shopSections.appendChild(section);
+
+    const itemGrid = grid.querySelector('.shop-grid');
+    group.items.forEach((item, ii) => {
+      const uid = group.cat + '-' + ii;
+      const art = (group.cat === 'bracelets' || group.cat === 'anklets')
+        ? strandArtSVG(item.c1, item.c2, uid)
+        : gemArtSVG(item.c1, item.c2, uid);
+      const saleNum = Math.max(0, item.price - DISCOUNT_AMOUNT);
+      const stock = randomStock();
+      const card = document.createElement('div');
+      card.className = 'shop-card';
+      card.innerHTML = `
+        <div class="shop-card-art" style="background:linear-gradient(150deg, ${item.c1}22, ${item.c2}22);">${art}</div>
+        <div class="shop-card-body">
+          <h4>${item.name}</h4>
+          <p class="scb-sub">${item.sub}</p>
+          <div class="shop-card-foot">
+            <div class="price-wrap"><span class="price-old">${formatINR(item.price)}</span><span class="price-new">${formatINR(saleNum)}</span></div>
+            <span class="stock-badge">⚡ Sirf ${stock} pieces bache!</span>
+            <button type="button" class="shop-add-btn" data-id="${item.id}" data-name="${item.name}" data-price="${formatINR(saleNum)}">Cart Mein Daalo</button>
+          </div>
+        </div>`;
+      itemGrid.appendChild(card);
+    });
+  });
+
+  shopSections.addEventListener('click', function(e){
+    const btn = e.target.closest('.shop-add-btn');
+    if (!btn) return;
+    addToCart({ id: btn.dataset.id, name: btn.dataset.name, price: btn.dataset.price, image: '' });
+    const original = btn.textContent;
+    btn.textContent = 'Add Ho Gaya ✓';
+    setTimeout(() => { btn.textContent = original; }, 1200);
+  });
+
+  // ---------- Shared Cart (same localStorage as homepage) ----------
+  const CART_KEY = 'astroAjoobaCart';
+  function loadCart(){
+    try { const raw = localStorage.getItem(CART_KEY); return raw ? JSON.parse(raw) : []; }
+    catch(e){ return []; }
+  }
+  function saveCart(cart){ try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch(e){} }
+  function priceToNumber(priceStr){ return Number(String(priceStr).replace(/[^0-9]/g, '')) || 0; }
+
+  function addToCart(product){
+    const cart = loadCart();
+    const existing = cart.find(item => item.id === product.id);
+    if (existing){ existing.qty += 1; }
+    else { cart.push({ id:product.id, name:product.name, price:product.price, image:product.image || '', qty:1 }); }
+    saveCart(cart);
+    renderCart();
+    openCart();
+  }
+  function changeQty(id, delta){
+    const cart = loadCart();
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    const updated = item.qty > 0 ? cart : cart.filter(i => i.id !== id);
+    saveCart(updated);
+    renderCart();
+  }
+  function removeFromCart(id){
+    const cart = loadCart().filter(i => i.id !== id);
+    saveCart(cart);
+    renderCart();
+  }
+
+  const cartBtn = document.getElementById('cartBtn');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartCloseBtn = document.getElementById('cartCloseBtn');
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartSubtotalEl = document.getElementById('cartSubtotal');
+  const cartCountEl = document.getElementById('cartCount');
+  const cartCheckoutBtn = document.getElementById('cartCheckoutBtn');
+
+  function openCart(){ cartDrawer.hidden = false; cartOverlay.hidden = false; }
+  function closeCart(){ cartDrawer.hidden = true; cartOverlay.hidden = true; }
+
+  function renderCart(){
+    const cart = loadCart();
+    const totalQty = cart.reduce((s,i) => s + i.qty, 0);
+    cartCountEl.textContent = totalQty;
+    cartCountEl.hidden = totalQty === 0;
+
+    if (cart.length === 0){
+      cartItemsEl.innerHTML = `<p class="cart-empty">Aapka cart abhi khaali hai.<br>Kuch items add karein ✦</p>`;
+    } else {
+      cartItemsEl.innerHTML = cart.map(item => {
+        const thumb = item.image ? `<img src="${item.image}" alt="${item.name}">` : `<span style="font-size:1.4rem;">✦</span>`;
+        return `
+        <div class="cart-item">
+          <div class="cart-item-thumb">${thumb}</div>
+          <div class="cart-item-info">
+            <div class="ci-name">${item.name}</div>
+            <div class="ci-price">${item.price}</div>
+            <div class="cart-item-qty">
+              <button type="button" class="cart-qty-btn" data-act="dec" data-id="${item.id}">−</button>
+              <span>${item.qty}</span>
+              <button type="button" class="cart-qty-btn" data-act="inc" data-id="${item.id}">+</button>
+            </div>
+          </div>
+          <button type="button" class="cart-item-remove" data-id="${item.id}">Hatao</button>
+        </div>`;
+      }).join('');
+    }
+
+    const subtotal = cart.reduce((s,i) => s + priceToNumber(i.price) * i.qty, 0);
+    cartSubtotalEl.textContent = formatINR(subtotal);
+
+    const waLines = cart.map(i => `${i.qty} x ${i.name} (${i.price})`).join('\n');
+    const waMsg = cart.length
+      ? `Namaste, mujhe yeh order karna hai:\n\n${waLines}\n\nSubtotal: ${formatINR(subtotal)}\n\nKripya aage guide karein.`
+      : `Namaste, mujhe Astro Ajooba se kuch products ke baare mein jaankari chahiye.`;
+    cartCheckoutBtn.href = `https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}`;
+  }
+
+  cartItemsEl.addEventListener('click', function(e){
+    const qtyBtn = e.target.closest('.cart-qty-btn');
+    if (qtyBtn){ changeQty(qtyBtn.dataset.id, qtyBtn.dataset.act === 'inc' ? 1 : -1); return; }
+    const removeBtn = e.target.closest('.cart-item-remove');
+    if (removeBtn){ removeFromCart(removeBtn.dataset.id); }
+  });
+
+  cartBtn.addEventListener('click', openCart);
+  cartCloseBtn.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  renderCart();
+</script>
+
+</body>
+</html>
