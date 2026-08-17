@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HHZ3P9ZKP2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HHZ3P9ZKP2');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Libra (Tula) Horoscope — Astro Ajooba</title>
 <meta name="description" content="Libra (Tula) ka aaj aur is hafte ka horoscope, Lapis Lazuli gemstone ke saath. Acharya Shubham Shastri dwara curated — Astro Ajooba.">
+<meta name="keywords" content="libra horoscope today, tula rashifal, libra weekly horoscope, lapis lazuli bracelet for libra, libra rashi bracelet, libra love career health horoscope">
 <meta name="google-site-verification" content="PASTE-YOUR-VERIFICATION-CODE-HERE">
-<link rel="canonical" href="https://YOUR-DOMAIN-HERE/rashi/libra.html">
+<link rel="canonical" href="https://astroajooba.com/rashi/libra.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Libra (Tula) Horoscope — Astro Ajooba">
 <meta property="og:description" content="Libra ka date-wise horoscope aur ruling gemstone — Lapis Lazuli.">
-<meta property="og:url" content="https://YOUR-DOMAIN-HERE/rashi/libra.html">
+<meta property="og:url" content="https://astroajooba.com/rashi/libra.html">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300..700,0..1&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -18,10 +28,7 @@
 </head>
 <body>
 
-<div class="sawan-bar">
-  <span>🔱 <strong>Sawan Special</strong> — Jab Tak Sawan Chalega, Astrology Advice Bhi <strong>FREE</strong> Hai!</span>
-  <a href="https://wa.me/919889911210?text=Namaste%20Acharya%20ji%2C%20Sawan%20Special%20offer%20ke%20under%20mujhe%20FREE%20astrology%20advice%20chahiye." target="_blank" rel="noopener">✆ WhatsApp Karo</a>
-</div>
+<div class="sawan-bar" id="festivalBar"></div>
 
 <header class="site">
   <nav class="wrap">
@@ -180,6 +187,48 @@
 </footer>
 
 <script>
+
+  // ---------- Festival Calendar (dynamic banner + sale system) ----------
+  const FESTIVALS = [
+    {date:"2026-01-14", name:"Makar Sankranti", emoji:"🪁", desc:"Makar Sankranti ki shubhkamnayein! Naye mausam ki shuruaat par gemstones par khaas chhoot.", discount:600},
+    {date:"2026-03-04", name:"Holi", emoji:"🎨", desc:"Rangon ka tyohar Holi! Aaj sabhi bracelets par extra rang-birangi chhoot.", discount:700},
+    {date:"2026-03-26", name:"Ram Navami", emoji:"🏹", desc:"Ram Navami ke shubh avsar par — naye sankalp, naye gemstones, khaas offer ke saath.", discount:600},
+    {date:"2026-04-21", name:"Akshaya Tritiya", emoji:"💰", desc:"Akshaya Tritiya — ratna aur gehne khareedne ka sabse shubh din. Aaj bada discount!", discount:900},
+    {date:"2026-08-17", name:"Nag Panchami", emoji:"🐍", desc:"Aaj Nag Panchami hai — Naag Devta ki kripa, suraksha ke liye khaas gemstones par extra chhoot!", discount:600},
+    {date:"2026-08-28", name:"Raksha Bandhan", emoji:"🎗️", desc:"Rakhi ka pawan tyohar — apne bhai-behen ke liye bracelets par khaas offer!", discount:700},
+    {date:"2026-09-04", name:"Janmashtami", emoji:"🦚", desc:"Kanha ke Janmotsav ki shubhkamnayein — aaj shubh khareedari par special discount!", discount:600},
+    {date:"2026-09-14", name:"Ganesh Chaturthi", emoji:"🐘", desc:"Ganpati Bappa Morya! Vighnaharta ke aagman par naye shubharambh ke liye offer.", discount:700},
+    {date:"2026-10-11", name:"Navratri", emoji:"🙏", desc:"Navratri shuru — Maa Durga ki shakti ke saath, shopping bhi aaj shubh hai!", discount:600},
+    {date:"2026-10-20", name:"Dussehra", emoji:"🏹", desc:"Vijayadashami — asatya par satya ki jeet. Naye kaam ki shuruaat ke liye khaas offer!", discount:700},
+    {date:"2026-10-29", name:"Karva Chauth", emoji:"🌙", desc:"Karva Chauth special — Moonstone aur Rose Quartz par extra chhoot!", discount:600},
+    {date:"2026-11-06", name:"Dhanteras", emoji:"🪔", desc:"Dhanteras — ratna aur gehne khareedne ka sabse shubh din. Aaj sabse bada discount!", discount:1000},
+    {date:"2026-11-08", name:"Diwali", emoji:"✨", desc:"Deepawali ki hardik shubhkamnayein! Aaj poori site par sabse bada Diwali Dhamaka Sale!", discount:1200},
+    {date:"2026-11-11", name:"Bhai Dooj", emoji:"👫", desc:"Bhai Dooj special — apne bhai-behen ko gift karne ke liye khaas chhoot!", discount:600}
+  ];
+
+  function getTodayFestival(){
+    const todayStr = new Date().toISOString().slice(0, 10);
+    return FESTIVALS.find(f => f.date === todayStr);
+  }
+
+  function getFestivalDiscount(){
+    const fest = getTodayFestival();
+    return fest ? fest.discount : 500;
+  }
+
+  function renderFestivalBar(){
+    const bar = document.getElementById('festivalBar');
+    if (!bar) return;
+    const fest = getTodayFestival();
+    if (fest){
+      const waMsg = `Namaste, aaj ${fest.name} hai — is offer ke baare mein jaankari chahiye.`;
+      bar.innerHTML = `<span>${fest.emoji} <strong>${fest.name} Special</strong> — ${fest.desc}</span><a href="https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener">✆ WhatsApp Karo</a>`;
+    } else {
+      bar.innerHTML = `<span>🔱 <strong>Astro Ajooba</strong> — Rashi Ke Hisaab Se Gemstones, Free Kundali Ke Saath</span><a href="https://wa.me/919889911210?text=Namaste%2C%20mujhe%20jaankari%20chahiye." target="_blank" rel="noopener">✆ WhatsApp Karo</a>`;
+    }
+  }
+  renderFestivalBar();
+
   const DAY_TEXTS = [
       "Aaj ka din career ke liye achha hai — aapki Balanced aur diplomatic energy aapko aage badhayegi. Kaam mein thoda extra focus rakhein.",
       "Rishton mein aaj thodi warmth mehsoos hogi. Apna Lapis Lazuli bracelet pehan kar confidence aur bhi badh sakta hai.",
