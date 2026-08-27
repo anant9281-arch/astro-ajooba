@@ -251,6 +251,25 @@
     text-transform:uppercase; color:rgba(243,238,227,0.55);
   }
 
+  /* ---------- RAKHI WEEK (temporary, date-limited section) ---------- */
+  .rakhi-week{
+    background:
+      radial-gradient(circle at 20% 30%, rgba(184,50,74,0.12), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(212,175,106,0.1), transparent 50%),
+      var(--bone);
+    padding:56px 0; text-align:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .rakhi-week-inner{ max-width:560px; margin:0 auto; }
+  .rakhi-icon{ font-size:2.4rem; }
+  .rakhi-title{
+    margin-top:10px; font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.5rem,3vw,2rem); color:var(--ink);
+  }
+  .rakhi-desc{ margin-top:14px; font-size:0.94rem; line-height:1.7; color:#5c5670; }
+  .rakhi-cta-row{
+    margin-top:24px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  }
+
   header.site{
     position:sticky; top:0; z-index:50;
     background:rgba(20,17,43,0.92);
@@ -1106,6 +1125,21 @@
   </div>
 </section>
 
+<section id="rakhiWeekSection" class="rakhi-week" hidden>
+  <div class="wrap">
+    <div class="rakhi-week-inner">
+      <div class="rakhi-icon">🎗️</div>
+      <p class="eyebrow" style="color:var(--rose);">Sirf Is Hafte — Rakhi Week Special</p>
+      <h2 class="rakhi-title">Apne Bhai-Behen Ke Liye Khaas Gift</h2>
+      <p class="rakhi-desc">Rakhi ka pawan tyohar aa raha hai — apne bhai ya behen ko ek gemstone bracelet gift karein jo unki rashi se juda ho. Is hafte, saare bracelets par extra chhoot.</p>
+      <div class="rakhi-cta-row">
+        <a href="#shop" class="btn-primary">Rakhi Gifts Dekho</a>
+        <a href="https://wa.me/919889911210?text=Namaste%2C%20mujhe%20Rakhi%20ke%20liye%20gift%20bracelet%20chahiye." class="btn-whatsapp" target="_blank" rel="noopener">✆ WhatsApp Karo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="strip">
   <div class="wrap">
     <span>Haath se banaye gemstones</span>
@@ -1465,12 +1499,24 @@
     {date:"2026-11-11", name:"Bhai Dooj", emoji:"👫", desc:"Bhai Dooj special — apne bhai-behen ko gift karne ke liye khaas chhoot!", discount:600}
   ];
 
+  // Week-long themes (date RANGE, not single day) — auto expires after end date
+  const WEEK_THEMES = [
+    {start:"2026-08-17", end:"2026-08-23", name:"Rakhi Week", emoji:"🎗️", desc:"Rakhi Week Special — apne bhai-behen ke liye gift bracelets par khaas chhoot!", discount:700, tint:"#B8324A"}
+  ];
+
+  function getActiveWeekTheme(){
+    const todayStr = new Date().toISOString().slice(0, 10);
+    return WEEK_THEMES.find(w => todayStr >= w.start && todayStr <= w.end);
+  }
+
   function getTodayFestival(){
     const todayStr = new Date().toISOString().slice(0, 10);
     return FESTIVALS.find(f => f.date === todayStr);
   }
 
   function getFestivalDiscount(){
+    const weekTheme = getActiveWeekTheme();
+    if (weekTheme) return weekTheme.discount;
     const fest = getTodayFestival();
     return fest ? fest.discount : 500;
   }
@@ -1478,8 +1524,12 @@
   function renderFestivalBar(){
     const bar = document.getElementById('festivalBar');
     if (!bar) return;
+    const weekTheme = getActiveWeekTheme();
     const fest = getTodayFestival();
-    if (fest){
+    if (weekTheme){
+      const waMsg = `Namaste, ${weekTheme.name} ke offer ke baare mein jaankari chahiye.`;
+      bar.innerHTML = `<span>${weekTheme.emoji} <strong>${weekTheme.name} Special</strong> — ${weekTheme.desc}</span><a href="https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener">✆ WhatsApp Karo</a>`;
+    } else if (fest){
       const waMsg = `Namaste, aaj ${fest.name} hai — is offer ke baare mein jaankari chahiye.`;
       bar.innerHTML = `<span>${fest.emoji} <strong>${fest.name} Special</strong> — ${fest.desc}</span><a href="https://wa.me/919889911210?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener">✆ WhatsApp Karo</a>`;
     } else {
@@ -1487,6 +1537,18 @@
     }
   }
   renderFestivalBar();
+
+  function renderRakhiSection(){
+    const section = document.getElementById('rakhiWeekSection');
+    if (!section) return;
+    const weekTheme = getActiveWeekTheme();
+    if (weekTheme && weekTheme.name === "Rakhi Week"){
+      section.hidden = false;
+    } else {
+      section.hidden = true;
+    }
+  }
+  renderRakhiSection();
 
   const ZODIAC = [
     {sign:"Aries", slug:"aries", hindi:"Mesh", dates:"Mar 21–Apr 19", range:[[3,21],[4,19]], glyph:"♈", stone:"Carnelian", blurb:"Energetic aur bold — naye kaam shuru karne mein sabse aage rehte hain."},
