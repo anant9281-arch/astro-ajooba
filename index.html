@@ -1037,6 +1037,20 @@
   </div>
 </div>
 
+<div id="rakhiOverlay" class="birthday-overlay" hidden>
+  <div class="birthday-card">
+    <button type="button" id="rakhiCloseBtn" class="birthday-close" aria-label="Close">✕</button>
+    <div class="birthday-emoji">🎗️🧵✨</div>
+    <p class="birthday-eyebrow">✦ Rakhi Week Special ✦</p>
+    <h2 class="birthday-title">Apne Bhai-Behen Ke Liye Gift Karein</h2>
+    <p class="birthday-msg">Raksha Bandhan ka pawan tyohar aa raha hai — is hafte, saare gemstone bracelets par khaas chhoot hai. Apni rashi ke hisaab se ek khaas gift chuniye, jo pyaar ke saath-saath suraksha aur shubhta bhi lekar aaye.</p>
+    <div style="display:flex; gap:12px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
+      <a href="#shop" id="rakhiPopupShopBtn" class="btn-primary">Rakhi Gifts Dekho</a>
+      <a href="https://wa.me/919889911210?text=Namaste%2C%20mujhe%20Rakhi%20ke%20liye%20gift%20bracelet%20chahiye." class="btn-whatsapp" target="_blank" rel="noopener">✆ WhatsApp Karo</a>
+    </div>
+  </div>
+</div>
+
 <header class="site">
   <nav class="wrap">
     <a href="#" class="logo"><span class="glyph">✦</span> ASTRO AJOOBA</a>
@@ -2384,6 +2398,30 @@
     function closeBirthday(){ overlay.hidden = true; }
     closeBtn.addEventListener('click', closeBirthday);
     overlay.addEventListener('click', function(e){ if (e.target === overlay) closeBirthday(); });
+  })();
+
+  // ---------- Rakhi Week Popup (auto-shows during active week theme, once per session) ----------
+  (function(){
+    const weekTheme = typeof getActiveWeekTheme === 'function' ? getActiveWeekTheme() : null;
+    if (!weekTheme || weekTheme.name !== "Rakhi Week") return;
+
+    const alreadyShown = sessionStorage.getItem('rakhiPopupShown');
+    if (alreadyShown) return;
+
+    const overlay = document.getElementById('rakhiOverlay');
+    const closeBtn = document.getElementById('rakhiCloseBtn');
+    const shopBtn = document.getElementById('rakhiPopupShopBtn');
+    if (!overlay) return;
+
+    setTimeout(() => {
+      overlay.hidden = false;
+      sessionStorage.setItem('rakhiPopupShown', '1');
+    }, 1200);
+
+    function closeRakhi(){ overlay.hidden = true; }
+    closeBtn.addEventListener('click', closeRakhi);
+    overlay.addEventListener('click', function(e){ if (e.target === overlay) closeRakhi(); });
+    if (shopBtn) shopBtn.addEventListener('click', closeRakhi);
   })();
 
   // ---------- Voice Welcome Message ----------
